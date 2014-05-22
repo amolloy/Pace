@@ -22,7 +22,6 @@
 	newTrack.title = [mediaItem valueForProperty:MPMediaItemPropertyTitle];
 	newTrack.duration = [mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
 	newTrack.trackHash = [mediaItem digest];
-	newTrack.mediaItemPersistentID = [mediaItem valueForProperty:MPMediaItemPropertyPersistentID];
 
 	++insertCount;
 	if (insertCount % 10 == 0)
@@ -52,14 +51,20 @@
 		NSError* error = nil;
 		NSArray* tracks = [moc executeFetchRequest:request error:&error];
 
-		if (tracks.count)
+		ASMTrack* track = tracks.firstObject;
+
+		if (!track)
 		{
-			NSLog(@"Found it already");
+			track = [self createTrackInManagedObjectContext:moc
+												   fromItem:mediaItem];
 		}
-		else
+
+		track.mediaItemPersistentID = [mediaItem valueForProperty:MPMediaItemPropertyPersistentID];
+
+		if (!track.tempo)
 		{
-			[itemsToLookup addObject:[self createTrackInManagedObjectContext:moc
-																	fromItem:mediaItem]];
+			[itemsToLookup addObject:track];
+			NSLog(@"Need to look up %@", track.title);
 		}
 	}];
 
