@@ -9,6 +9,7 @@
 #import "ASMAppDelegate.h"
 
 #import "ASMMasterViewController.h"
+#import "ASMMusicInfoImporter.h"
 
 @implementation ASMAppDelegate
 
@@ -18,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	ASMMusicInfoImporter* meh = [[ASMMusicInfoImporter alloc] init];
+	[meh bleh];
+
     // Override point for customization after application launch.
 	UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
 	ASMMasterViewController *controller = (ASMMasterViewController *)navigationController.topViewController;
