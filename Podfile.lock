@@ -1,10 +1,18 @@
 PODS:
   - ASMAsyncEnumeration (0.1.0)
   - ASMCityHash (0.1)
+  - FCModel (0.9.0):
+    - FMDB (~> 2.1)
+  - FMDB (2.3):
+    - FMDB/standard
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
+    - FMDB/common
 
 DEPENDENCIES:
   - ASMAsyncEnumeration
   - ASMCityHash (from `https://github.com/amolloy/ASMCityHash.git`)
+  - FCModel
 
 EXTERNAL SOURCES:
   ASMCityHash:
@@ -13,5 +21,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ASMAsyncEnumeration: 138c2c39ccbee9e0223952cfee3ba2fec5bad8e3
   ASMCityHash: 9c8684a3877d9e7aeb87960116e9d7088f63d8a1
+  FCModel: 1f01fdcb5b469d3ab3c307ee90cb1b743cc3adfd
+  FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
 
 COCOAPODS: 0.33.0
