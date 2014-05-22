@@ -194,7 +194,7 @@
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"title"] description];
-	cell.detailTextLabel.text = [[object valueForKey:@"medaiItemPersistentID"] description];
+	cell.detailTextLabel.text = [[object valueForKey:@"mediaItemPersistentID"] description];
 }
 
 @end
