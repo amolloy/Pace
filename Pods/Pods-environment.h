@@ -6,6 +6,12 @@
 // project.
 
 
+// ASMAsyncEnumeration
+#define COCOAPODS_POD_AVAILABLE_ASMAsyncEnumeration
+#define COCOAPODS_VERSION_MAJOR_ASMAsyncEnumeration 0
+#define COCOAPODS_VERSION_MINOR_ASMAsyncEnumeration 1
+#define COCOAPODS_VERSION_PATCH_ASMAsyncEnumeration 0
+
 // ASMCityHash
 #define COCOAPODS_POD_AVAILABLE_ASMCityHash
 #define COCOAPODS_VERSION_MAJOR_ASMCityHash 0

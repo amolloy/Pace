@@ -1,6 +1,7 @@
 platform :ios, '7'
 
 pod 'ASMCityHash', :git => 'https://github.com/amolloy/ASMCityHash.git'
+pod 'ASMAsyncEnumeration'
 
 #post_install do | installer |
 #  require 'fileutils'

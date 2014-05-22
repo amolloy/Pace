@@ -1,7 +1,9 @@
 PODS:
+  - ASMAsyncEnumeration (0.1.0)
   - ASMCityHash (0.1)
 
 DEPENDENCIES:
+  - ASMAsyncEnumeration
   - ASMCityHash (from `https://github.com/amolloy/ASMCityHash.git`)
 
 EXTERNAL SOURCES:
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/amolloy/ASMCityHash.git
 
 SPEC CHECKSUMS:
+  ASMAsyncEnumeration: 138c2c39ccbee9e0223952cfee3ba2fec5bad8e3
   ASMCityHash: 9c8684a3877d9e7aeb87960116e9d7088f63d8a1
 
 COCOAPODS: 0.33.0
