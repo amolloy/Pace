@@ -24,6 +24,7 @@
 		B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */; };
 		B49E03CD192E2C8A00C5ED47 /* _ASMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03CC192E2C8A00C5ED47 /* _ASMTrack.m */; };
 		B49E03D0192E2C9200C5ED47 /* ASMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03CF192E2C9200C5ED47 /* ASMTrack.m */; };
+		B49E03D4192E343A00C5ED47 /* ASMTrackFC.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03D3192E343A00C5ED47 /* ASMTrackFC.m */; };
 		B4D5C0E6192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
 		B4D5C0EA192D89CF00D6DF4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E9192D89CF00D6DF4C /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 		B49E03CC192E2C8A00C5ED47 /* _ASMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ASMTrack.m; sourceTree = "<group>"; };
 		B49E03CE192E2C9200C5ED47 /* ASMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTrack.h; sourceTree = "<group>"; };
 		B49E03CF192E2C9200C5ED47 /* ASMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTrack.m; sourceTree = "<group>"; };
+		B49E03D2192E343A00C5ED47 /* ASMTrackFC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTrackFC.h; sourceTree = "<group>"; };
+		B49E03D3192E343A00C5ED47 /* ASMTrackFC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTrackFC.m; sourceTree = "<group>"; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B49E03D1192E342400C5ED47 /* FCModel */ = {
+			isa = PBXGroup;
+			children = (
+				B49E03D2192E343A00C5ED47 /* ASMTrackFC.h */,
+				B49E03D3192E343A00C5ED47 /* ASMTrackFC.m */,
+			);
+			name = FCModel;
+			sourceTree = "<group>";
+		};
 		B4D5C0D9192D89CF00D6DF4C = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 		B4E5361B192D8E8000F4C59F /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				B49E03D1192E342400C5ED47 /* FCModel */,
 				B4E53628192D8E9700F4C59F /* Computer */,
 				B4E53629192D8EA200F4C59F /* Human */,
 			);
@@ -382,6 +395,7 @@
 				B4D5C104192D89CF00D6DF4C /* ASMDetailViewController.m in Sources */,
 				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
 				B49E03CD192E2C8A00C5ED47 /* _ASMTrack.m in Sources */,
+				B49E03D4192E343A00C5ED47 /* ASMTrackFC.m in Sources */,
 				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
 				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
 				B49E03D0192E2C9200C5ED47 /* ASMTrack.m in Sources */,

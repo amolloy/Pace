@@ -11,6 +11,7 @@
 #import "NSArray+ASMAsyncEnumeration.h"
 #import "MPMediaItem+ASMHash.h"
 #import "ASMTrack.h"
+#import "ASMTrackFC.h"
 
 @implementation ASMMusicInfoImporter
 
@@ -42,6 +43,8 @@
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"trackHash" ascending:YES]];
 	request.fetchLimit = 1;
 
+	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+
 	[query.items enumerateObjectsUsingBlock:^(MPMediaItem* mediaItem, NSUInteger idx, BOOL *stop) {
 		NSNumber* digest = [mediaItem digest];
 		NSNumber* duration = [mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
@@ -71,7 +74,60 @@
 	NSError* error = nil;
 	[moc save:&error];
 
-	NSLog(@"Done");
+	NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
+
+	NSTimeInterval duration = end - start;
+	NSInteger minutes = duration / 60;
+	NSInteger seconds = (NSInteger)duration % 60;
+
+	NSLog(@"Done in %@:%@", @(minutes), @(seconds));
+}
+
+-(ASMTrackFC*)createTrackFCFromItem:(MPMediaItem*)mediaItem
+{
+	ASMTrackFC* newTrack = [ASMTrackFC instanceWithPrimaryKey:[mediaItem digest]];
+	newTrack.title = [mediaItem valueForProperty:MPMediaItemPropertyTitle];
+	newTrack.duration = [[mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
+	[newTrack save];
+
+	return newTrack;
+}
+
+-(void)blehUsingFCModel
+{
+	MPMediaQuery* query = [MPMediaQuery songsQuery];
+
+	NSMutableArray* itemsToLookup = [NSMutableArray array];
+
+	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+
+	[query.items enumerateObjectsUsingBlock:^(MPMediaItem* mediaItem, NSUInteger idx, BOOL *stop) {
+		NSNumber* digest = [mediaItem digest];
+		NSNumber* duration = [mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
+
+		ASMTrackFC* track = [ASMTrackFC firstInstanceWhere:@"id = ? AND duration = ? LIMIT 1", digest, duration];
+
+		if (!track)
+		{
+			track = [self createTrackFCFromItem:mediaItem];
+		}
+
+		track.mediaItemPersistentID = [mediaItem valueForProperty:MPMediaItemPropertyPersistentID];
+
+		if (!track.tempo)
+		{
+			[itemsToLookup addObject:track];
+			NSLog(@"Need to look up %@", track.title);
+		}
+	}];
+
+	NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
+
+	NSTimeInterval duration = end - start;
+	NSInteger minutes = duration / 60;
+	NSInteger seconds = (NSInteger)duration % 60;
+
+	NSLog(@"Done in %@:%@", @(minutes), @(seconds));
 }
 
 @end

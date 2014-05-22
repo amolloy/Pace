@@ -10,6 +10,7 @@
 
 #import "ASMMasterViewController.h"
 #import "ASMMusicInfoImporter.h"
+#import "FCModel.h"
 
 @implementation ASMAppDelegate
 
@@ -25,7 +26,13 @@
 	controller.managedObjectContext = self.managedObjectContext;
 
 	ASMMusicInfoImporter* meh = [[ASMMusicInfoImporter alloc] init];
+
+	/*
 	[meh blehManagedObjectContext:self.managedObjectContext];
+	 */
+
+	[self setupFCModel];
+	[meh blehUsingFCModel];
 
     return YES;
 }
@@ -143,6 +150,64 @@
     }    
     
     return _persistentStoreCoordinator;
+}
+
+- (void)setupFCModel
+{
+	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"paceFC.sqlite3"];
+
+	[FCModel openDatabaseAtPath:dbPath withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
+		[db beginTransaction];
+
+		// My custom failure handling. Yours may vary.
+		void (^failedAt)(int statement) = ^(int statement){
+			int lastErrorCode = db.lastErrorCode;
+			NSString *lastErrorMessage = db.lastErrorMessage;
+			[db rollback];
+			NSAssert3(0, @"Migration statement %d failed, code %d: %@", statement, lastErrorCode, lastErrorMessage);
+		};
+
+/*
+ @property (nonatomic) int64_t id;
+ @property (nonatomic) NSTimeInterval duration;
+ @property (nonatomic) NSNumber* tempo;
+ @property (nonatomic, copy) NSString* title;
+ @property (nonatomic) NSNumber* mediaItemPersistentID;
+*/
+
+		if (*schemaVersion < 1) {
+			if (! [db executeUpdate:
+				   @"CREATE TABLE ASMTrackFC ("
+				   @"    id           INTEGER PRIMARY KEY,"
+				   @"    duration     REAL NOT NULL,"
+				   @"    tempo        REAL,"
+				   @"    title        TEXT NOT NULL"
+				   @");"
+				   ]) failedAt(1);
+
+			if (! [db executeUpdate:@"CREATE INDEX IF NOT EXISTS duration ON ASMTrackFC (duration);"]) failedAt(2);
+
+			*schemaVersion = 1;
+		}
+
+		// If you wanted to change the schema in a later app version, you'd add something like this here:
+		/*
+		 if (*schemaVersion < 2) {
+		 if (! [db executeUpdate:@"ALTER TABLE Person ADD COLUMN title TEXT NOT NULL DEFAULT ''"]) failedAt(3);
+		 *schemaVersion = 2;
+		 }
+
+		 // And so on...
+		 if (*schemaVersion < 3) {
+		 if (! [db executeUpdate:@"CREATE TABLE..."]) failedAt(4);
+		 *schemaVersion = 3;
+		 }
+
+		 */
+
+		[db commit];
+	}];
 }
 
 #pragma mark - Application's Documents directory
