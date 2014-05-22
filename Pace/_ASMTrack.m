@@ -5,13 +5,13 @@
 
 const struct ASMTrackAttributes ASMTrackAttributes = {
 	.duration = @"duration",
-	.name = @"name",
+	.mediaItemPersistentID = @"mediaItemPersistentID",
 	.tempo = @"tempo",
+	.title = @"title",
 	.trackHash = @"trackHash",
 };
 
 const struct ASMTrackRelationships ASMTrackRelationships = {
-	.artist = @"artist",
 };
 
 const struct ASMTrackFetchedProperties ASMTrackFetchedProperties = {
@@ -43,8 +43,13 @@ const struct ASMTrackFetchedProperties ASMTrackFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"tempoValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"tempo"];
+	if ([key isEqualToString:@"durationValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"mediaItemPersistentIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"mediaItemPersistentID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -64,11 +69,49 @@ const struct ASMTrackFetchedProperties ASMTrackFetchedProperties = {
 
 
 
+- (double)durationValue {
+	NSNumber *result = [self duration];
+	return [result doubleValue];
+}
+
+- (void)setDurationValue:(double)value_ {
+	[self setDuration:[NSNumber numberWithDouble:value_]];
+}
+
+- (double)primitiveDurationValue {
+	NSNumber *result = [self primitiveDuration];
+	return [result doubleValue];
+}
+
+- (void)setPrimitiveDurationValue:(double)value_ {
+	[self setPrimitiveDuration:[NSNumber numberWithDouble:value_]];
+}
 
 
 
-@dynamic name;
 
+
+@dynamic mediaItemPersistentID;
+
+
+
+- (int64_t)mediaItemPersistentIDValue {
+	NSNumber *result = [self mediaItemPersistentID];
+	return [result longLongValue];
+}
+
+- (void)setMediaItemPersistentIDValue:(int64_t)value_ {
+	[self setMediaItemPersistentID:[NSNumber numberWithLongLong:value_]];
+}
+
+- (int64_t)primitiveMediaItemPersistentIDValue {
+	NSNumber *result = [self primitiveMediaItemPersistentID];
+	return [result longLongValue];
+}
+
+- (void)setPrimitiveMediaItemPersistentIDValue:(int64_t)value_ {
+	[self setPrimitiveMediaItemPersistentID:[NSNumber numberWithLongLong:value_]];
+}
 
 
 
@@ -78,23 +121,11 @@ const struct ASMTrackFetchedProperties ASMTrackFetchedProperties = {
 
 
 
-- (float)tempoValue {
-	NSNumber *result = [self tempo];
-	return [result floatValue];
-}
 
-- (void)setTempoValue:(float)value_ {
-	[self setTempo:[NSNumber numberWithFloat:value_]];
-}
 
-- (float)primitiveTempoValue {
-	NSNumber *result = [self primitiveTempo];
-	return [result floatValue];
-}
 
-- (void)setPrimitiveTempoValue:(float)value_ {
-	[self setPrimitiveTempo:[NSNumber numberWithFloat:value_]];
-}
+@dynamic title;
+
 
 
 
@@ -125,10 +156,6 @@ const struct ASMTrackFetchedProperties ASMTrackFetchedProperties = {
 
 
 
-
-@dynamic artist;
-
-	
 
 
 

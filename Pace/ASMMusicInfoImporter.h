@@ -10,6 +10,6 @@
 
 @interface ASMMusicInfoImporter : NSObject
 
--(void)bleh;
+-(void)blehManagedObjectContext:(NSManagedObjectContext*)moc;
 
 @end

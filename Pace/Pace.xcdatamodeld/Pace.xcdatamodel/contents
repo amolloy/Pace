@@ -12,7 +12,7 @@
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="track" inverseEntity="Artist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Track" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Artist" positionX="-54" positionY="9" width="128" height="73"/>
+        <element name="Artist" positionX="133" positionY="27" width="128" height="73"/>
+        <element name="Track" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

@@ -6,19 +6,19 @@
 
 extern const struct ASMTrackAttributes {
 	__unsafe_unretained NSString *duration;
-	__unsafe_unretained NSString *name;
+	__unsafe_unretained NSString *mediaItemPersistentID;
 	__unsafe_unretained NSString *tempo;
+	__unsafe_unretained NSString *title;
 	__unsafe_unretained NSString *trackHash;
 } ASMTrackAttributes;
 
 extern const struct ASMTrackRelationships {
-	__unsafe_unretained NSString *artist;
 } ASMTrackRelationships;
 
 extern const struct ASMTrackFetchedProperties {
 } ASMTrackFetchedProperties;
 
-@class ASMArtist;
+
 
 
 
@@ -38,9 +38,13 @@ extern const struct ASMTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDecimalNumber* duration;
+@property (nonatomic, strong) NSNumber* duration;
 
 
+
+@property double durationValue;
+- (double)durationValue;
+- (void)setDurationValue:(double)value_;
 
 //- (BOOL)validateDuration:(id*)value_ error:(NSError**)error_;
 
@@ -48,25 +52,35 @@ extern const struct ASMTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSNumber* mediaItemPersistentID;
 
 
 
-//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+@property int64_t mediaItemPersistentIDValue;
+- (int64_t)mediaItemPersistentIDValue;
+- (void)setMediaItemPersistentIDValue:(int64_t)value_;
+
+//- (BOOL)validateMediaItemPersistentID:(id*)value_ error:(NSError**)error_;
 
 
 
 
 
-@property (nonatomic, strong) NSNumber* tempo;
+@property (nonatomic, strong) NSDecimalNumber* tempo;
 
 
-
-@property float tempoValue;
-- (float)tempoValue;
-- (void)setTempoValue:(float)value_;
 
 //- (BOOL)validateTempo:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* title;
+
+
+
+//- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -86,13 +100,6 @@ extern const struct ASMTrackFetchedProperties {
 
 
 
-@property (nonatomic, strong) ASMArtist *artist;
-
-//- (BOOL)validateArtist:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @end
 
@@ -103,23 +110,32 @@ extern const struct ASMTrackFetchedProperties {
 @interface _ASMTrack (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSDecimalNumber*)primitiveDuration;
-- (void)setPrimitiveDuration:(NSDecimalNumber*)value;
+- (NSNumber*)primitiveDuration;
+- (void)setPrimitiveDuration:(NSNumber*)value;
+
+- (double)primitiveDurationValue;
+- (void)setPrimitiveDurationValue:(double)value_;
 
 
 
 
-- (NSString*)primitiveName;
-- (void)setPrimitiveName:(NSString*)value;
+- (NSNumber*)primitiveMediaItemPersistentID;
+- (void)setPrimitiveMediaItemPersistentID:(NSNumber*)value;
+
+- (int64_t)primitiveMediaItemPersistentIDValue;
+- (void)setPrimitiveMediaItemPersistentIDValue:(int64_t)value_;
 
 
 
 
-- (NSNumber*)primitiveTempo;
-- (void)setPrimitiveTempo:(NSNumber*)value;
+- (NSDecimalNumber*)primitiveTempo;
+- (void)setPrimitiveTempo:(NSDecimalNumber*)value;
 
-- (float)primitiveTempoValue;
-- (void)setPrimitiveTempoValue:(float)value_;
+
+
+
+- (NSString*)primitiveTitle;
+- (void)setPrimitiveTitle:(NSString*)value;
 
 
 
@@ -131,11 +147,6 @@ extern const struct ASMTrackFetchedProperties {
 - (void)setPrimitiveTrackHashValue:(int64_t)value_;
 
 
-
-
-
-- (ASMArtist*)primitiveArtist;
-- (void)setPrimitiveArtist:(ASMArtist*)value;
 
 
 @end
