@@ -3,7 +3,7 @@
     <entity name="Track" representedClassName="ASMTrack" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="mediaItemPersistentID" optional="YES" transient="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="tempo" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tempo" optional="YES" attributeType="Decimal" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="trackHash" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
