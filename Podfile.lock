@@ -1,0 +1,14 @@
+PODS:
+  - ASMCityHash (0.1)
+
+DEPENDENCIES:
+  - ASMCityHash (from `https://github.com/amolloy/ASMCityHash.git`)
+
+EXTERNAL SOURCES:
+  ASMCityHash:
+    :git: https://github.com/amolloy/ASMCityHash.git
+
+SPEC CHECKSUMS:
+  ASMCityHash: 9c8684a3877d9e7aeb87960116e9d7088f63d8a1
+
+COCOAPODS: 0.33.0
