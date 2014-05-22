@@ -9,7 +9,7 @@
 #import "ASMMusicInfoImporter.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "NSArray+ASMAsyncEnumeration.h"
-#import "NSString+ASMCityHash.h"
+#import "MPMediaItem+ASMHash.h"
 
 @implementation ASMMusicInfoImporter
 
@@ -19,24 +19,18 @@
 
 	NSMutableDictionary* hashTest = [NSMutableDictionary dictionary];
 
-	[query.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		NSString* artist = [obj valueForProperty:MPMediaItemPropertyArtist];
-		NSString* album = [obj valueForProperty:MPMediaItemPropertyAlbumTitle];
-		NSString* title = [obj valueForProperty:MPMediaItemPropertyTitle];
-		NSNumber* duration = [obj valueForProperty:MPMediaItemPropertyPlaybackDuration];
+	[query.items enumerateObjectsUsingBlock:^(MPMediaItem* mediaItem, NSUInteger idx, BOOL *stop) {
+		NSNumber* digest = [mediaItem digest];
 
-		NSString* strToHash = [NSString stringWithFormat:@"%@ - %@: %@ (%@)", artist, album, title, duration];
-		NSNumber* hash = @([strToHash cityHash64]);
-
-		if (hashTest[hash])
+		if (hashTest[digest])
 		{
 			NSLog(@"Collision:");
-			NSLog(@"%@", hashTest[hash]);
-			NSLog(@"%@", strToHash);
+			NSLog(@"%@", hashTest[digest]);
+			NSLog(@"%@", [mediaItem digestString]);
 			NSLog(@"==========");
 		}
 
-		hashTest[hash] = strToHash;
+		hashTest[digest] = [mediaItem digestString];
 	}];
 
 	NSLog(@"Done");

@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */; };
 		B4D5C0E6192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
 		B4D5C0EA192D89CF00D6DF4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E9192D89CF00D6DF4C /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 /* Begin PBXFileReference section */
 		0984905DDCAD47118410A59B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		252E99B689414A22AA24254B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem+ASMHash.h"; sourceTree = "<group>"; };
+		B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem+ASMHash.m"; sourceTree = "<group>"; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -171,6 +174,8 @@
 				B4D5C0EE192D89CF00D6DF4C /* Supporting Files */,
 				B4E5362A192D8F1F00F4C59F /* ASMMusicInfoImporter.h */,
 				B4E5362B192D8F1F00F4C59F /* ASMMusicInfoImporter.m */,
+				B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */,
+				B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */,
 			);
 			path = Pace;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 			files = (
 				B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */,
 				B4D5C104192D89CF00D6DF4C /* ASMDetailViewController.m in Sources */,
+				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
 				B4E53624192D8E8E00F4C59F /* _ASMArtist.m in Sources */,
 				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
 				B4E53625192D8E8E00F4C59F /* _ASMTrack.m in Sources */,
