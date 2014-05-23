@@ -95,13 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B498B9F7192F64FB00CB4BCC /* EchoNest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = EchoNest;
-			sourceTree = "<group>";
-		};
 		B498B9F8192F652F00CB4BCC /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				B498B9F8192F652F00CB4BCC /* Data Model */,
-				B498B9F7192F64FB00CB4BCC /* EchoNest */,
 				B4D5C0F6192D89CF00D6DF4C /* ASMAppDelegate.h */,
 				B4D5C0F7192D89CF00D6DF4C /* ASMAppDelegate.m */,
 				B4D5C0F9192D89CF00D6DF4C /* Main.storyboard */,

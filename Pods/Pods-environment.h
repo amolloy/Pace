@@ -42,3 +42,9 @@
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 3
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
+// enios
+#define COCOAPODS_POD_AVAILABLE_enios
+#define COCOAPODS_VERSION_MAJOR_enios 0
+#define COCOAPODS_VERSION_MINOR_enios 0
+#define COCOAPODS_VERSION_PATCH_enios 1
+
