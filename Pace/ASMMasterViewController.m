@@ -7,7 +7,7 @@
 //
 
 #import "ASMMasterViewController.h"
-#import "ASMTrackFC.h"
+#import "ASMTrack.h"
 
 @interface ASMMasterViewController ()
 @property (nonatomic, strong) NSArray* tracks;
@@ -28,7 +28,7 @@
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
 	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-	self.tracks = [ASMTrackFC instancesOrderedBy:@"title"];
+	self.tracks = [ASMTrack instancesOrderedBy:@"title"];
 	NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
 	NSTimeInterval delta = end - start;
 	NSInteger minutes = delta / 60;
@@ -70,7 +70,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-	ASMTrackFC* track = self.tracks[indexPath.row];
+	ASMTrack* track = self.tracks[indexPath.row];
 
     cell.textLabel.text = track.title;
 	cell.detailTextLabel.text = [track.tempo description];

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Andrew Molloy. All rights reserved.
 //
 
-#import "ASMTrackFC.h"
+#import "ASMTrack.h"
 
-@implementation ASMTrackFC
+@implementation ASMTrack
 
 @end

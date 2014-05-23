@@ -10,13 +10,13 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "NSArray+ASMAsyncEnumeration.h"
 #import "MPMediaItem+ASMHash.h"
-#import "ASMTrackFC.h"
+#import "ASMTrack.h"
 
 @implementation ASMMusicInfoImporter
 
--(ASMTrackFC*)createTrackFCFromItem:(MPMediaItem*)mediaItem
+-(ASMTrack*)createTrackFCFromItem:(MPMediaItem*)mediaItem
 {
-	ASMTrackFC* newTrack = [ASMTrackFC instanceWithPrimaryKey:[mediaItem digest]];
+	ASMTrack* newTrack = [ASMTrack instanceWithPrimaryKey:[mediaItem digest]];
 	newTrack.title = [mediaItem valueForProperty:MPMediaItemPropertyTitle];
 	newTrack.duration = [[mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
 	[newTrack save];
@@ -41,7 +41,7 @@
 		 NSNumber* digest = [mediaItem digest];
 		 NSNumber* duration = [mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
 
-		 ASMTrackFC* track = [ASMTrackFC firstInstanceWhere:@"id = ? AND duration = ? LIMIT 1", digest, duration];
+		 ASMTrack* track = [ASMTrack firstInstanceWhere:@"id = ? AND duration = ? LIMIT 1", digest, duration];
 
 		 if (!track)
 		 {

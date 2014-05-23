@@ -69,7 +69,7 @@
 
 		if (*schemaVersion < 1) {
 			if (! [db executeUpdate:
-				   @"CREATE TABLE ASMTrackFC ("
+				   @"CREATE TABLE ASMTrack ("
 				   @"    id           INTEGER PRIMARY KEY,"
 				   @"    duration     REAL NOT NULL,"
 				   @"    tempo        REAL,"
@@ -77,7 +77,7 @@
 				   @");"
 				   ]) failedAt(1);
 
-			if (! [db executeUpdate:@"CREATE INDEX IF NOT EXISTS duration ON ASMTrackFC (duration);"]) failedAt(2);
+			if (! [db executeUpdate:@"CREATE INDEX IF NOT EXISTS duration ON ASMTrack (duration);"]) failedAt(2);
 
 			*schemaVersion = 1;
 		}

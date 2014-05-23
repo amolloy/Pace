@@ -8,7 +8,7 @@
 
 #import "FCModel.h"
 
-@interface ASMTrackFC : FCModel
+@interface ASMTrack : FCModel
 
 @property (nonatomic) int64_t id;
 @property (nonatomic) NSTimeInterval duration;
