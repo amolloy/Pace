@@ -11,6 +11,7 @@
 
 @interface ASMMasterViewController ()
 @property (nonatomic, strong) NSArray* tracks;
+@property (nonatomic, strong) NSTimer* reloadOnInsertTime;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -27,14 +28,55 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
 	self.tracks = [ASMTrack instancesOrderedBy:@"title"];
-	NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
-	NSTimeInterval delta = end - start;
-	NSInteger minutes = delta / 60;
-	NSInteger seconds = (NSInteger)delta % 60;
+}
 
-	NSLog(@"Loaded: %@:%@", @(minutes), @(seconds));
+- (void)viewWillAppear:(BOOL)animated
+{
+	[NSNotificationCenter.defaultCenter addObserver:self
+										   selector:@selector(modelDidUpdate:)
+											   name:FCModelInsertNotification
+											 object:ASMTrack.class];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[NSNotificationCenter.defaultCenter removeObserver:self
+												  name:FCModelInsertNotification
+												object:ASMTrack.class];
+}
+
+- (void)modelDidUpdate:(NSNotification*)notification
+{
+	static NSInteger sUpdateCount = 0;
+
+	sUpdateCount++;
+
+	[self.reloadOnInsertTime invalidate];
+	self.reloadOnInsertTime = nil;
+	if (sUpdateCount % 50 == 0)
+	{
+		[self reloadAllData];
+	}
+	else
+	{
+		self.reloadOnInsertTime = [NSTimer scheduledTimerWithTimeInterval:0.5
+																   target:self
+																 selector:@selector(reloadAllData)
+																 userInfo:nil
+																  repeats:NO];
+	}
+}
+
+- (void)reloadAllData
+{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		self.tracks = [ASMTrack instancesOrderedBy:@"title"];
+		[self.tableView performSelectorOnMainThread:@selector(reloadData)
+										 withObject:nil
+									  waitUntilDone:NO];
+	});
 }
 
 - (void)didReceiveMemoryWarning
