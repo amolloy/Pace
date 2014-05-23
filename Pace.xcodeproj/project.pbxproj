@@ -95,6 +95,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B498B9F7192F64FB00CB4BCC /* EchoNest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EchoNest;
+			sourceTree = "<group>";
+		};
 		B49E03D1192E342400C5ED47 /* FCModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +147,7 @@
 		B4D5C0ED192D89CF00D6DF4C /* Pace */ = {
 			isa = PBXGroup;
 			children = (
+				B498B9F7192F64FB00CB4BCC /* EchoNest */,
 				B4E5361B192D8E8000F4C59F /* Data Model */,
 				B4D5C0F6192D89CF00D6DF4C /* ASMAppDelegate.h */,
 				B4D5C0F7192D89CF00D6DF4C /* ASMAppDelegate.m */,
