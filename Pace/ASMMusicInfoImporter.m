@@ -56,9 +56,41 @@
 			 NSLog(@"Need to look up %@", track.title);
 		 }
 	 }
-															   completion:^(NSUInteger stoppedIndex, NSError *error)
+													completion:^(NSUInteger stoppedIndex, NSError *error)
 	 {
+		 NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
 
+		 NSTimeInterval duration = end - start;
+		 NSInteger minutes = duration / 60;
+		 NSInteger seconds = (NSInteger)duration % 60;
+
+		 NSLog(@"Done in %@:%@", @(minutes), @(seconds));
+
+		 dispatch_async(dispatch_get_main_queue(), ^{
+			 [self gatherTempoForTracks:itemsToLookup];
+		 });
+	 }];
+}
+
+-(void)gatherTempoForTracks:(NSArray*)tracks
+{
+	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+	[tracks asm_enumerateObjectsAsynchronouslyWithOptions:0
+												  onQueue:queue
+											 stepsPerLoop:10
+											   usingBlock:^(MPMediaItem* mediaItem, NSUInteger idx, BOOL *stop)
+	 {
+		 /*
+		  BYBMYPBQEOCNICHDI
+
+		  http://developer.echonest.com/api/v4/song/search\?api_key\=BYBMYPBQEOCNICHDI\&format\=json\&results\=1\&artist\=gorillaz\&title\=white%20light\&bucket\=audio_summary
+		  */
+
+	 }
+											   completion:^(NSUInteger stoppedIndex, NSError *error)
+	 {
 		 NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
 
 		 NSTimeInterval duration = end - start;
