@@ -1,5 +1,5 @@
 #include "Pods-ASMAsyncEnumeration.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/ASMAsyncEnumeration" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ASMAsyncEnumeration" "${PODS_ROOT}/Headers/ASMCityHash" "${PODS_ROOT}/Headers/FCModel" "${PODS_ROOT}/Headers/FMDB" "${PODS_ROOT}/Headers/enios"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/ASMAsyncEnumeration" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ASMAsyncEnumeration" "${PODS_ROOT}/Headers/ASMCityHash" "${PODS_ROOT}/Headers/FCModel" "${PODS_ROOT}/Headers/FMDB"
 OTHER_LDFLAGS = -ObjC
 PODS_ROOT = ${SRCROOT}

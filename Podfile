@@ -1,6 +1,5 @@
 platform :ios, '7'
 
-pod 'enios'
 pod 'ASMCityHash', :git => 'https://github.com/amolloy/ASMCityHash.git'
 pod 'ASMAsyncEnumeration'
 pod 'FCModel'
