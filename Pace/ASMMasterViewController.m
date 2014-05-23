@@ -45,6 +45,9 @@
 	[NSNotificationCenter.defaultCenter removeObserver:self
 												  name:FCModelInsertNotification
 												object:ASMTrack.class];
+	[NSNotificationCenter.defaultCenter removeObserver:self
+												  name:FCModelUpdateNotification
+												object:ASMTrack.class];
 }
 
 - (void)modelDidUpdate:(NSNotification*)notification

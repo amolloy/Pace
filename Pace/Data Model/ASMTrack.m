@@ -7,7 +7,14 @@
 //
 
 #import "ASMTrack.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation ASMTrack
+
+-(NSString*)artist
+{
+	NSAssert(self.mediaItem, @"Can't get artist before we have our media item");
+	return [self.mediaItem valueForProperty:MPMediaItemPropertyArtist];
+}
 
 @end

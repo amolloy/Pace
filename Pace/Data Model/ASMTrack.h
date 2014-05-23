@@ -8,12 +8,16 @@
 
 #import "FCModel.h"
 
+@class MPMediaItem;
+
 @interface ASMTrack : FCModel
 
 @property (nonatomic) int64_t id;
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic) NSNumber* tempo;
+@property (nonatomic) NSDate* lastTempoSearch;
 @property (nonatomic, copy) NSString* title;
-@property (nonatomic) NSNumber* mediaItemPersistentID;
+@property (nonatomic) MPMediaItem* mediaItem;
+@property (nonatomic, readonly) NSString* artist;
 
 @end

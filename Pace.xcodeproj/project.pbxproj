@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B498B9FA192F652F00CB4BCC /* ASMTrack.m */; };
-		B49C88E3192FC55100F4D178 /* ASMTrack+ASMEchoNest.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88E2192FC55100F4D178 /* ASMTrack+ASMEchoNest.m */; };
+		B49C88EA192FDD6700F4D178 /* ASMTempoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */; };
+		B49C88ED192FDD7900F4D178 /* ASMEchoNestTempoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */; };
 		B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */; };
 		B4D5C0E6192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
@@ -44,8 +45,10 @@
 		252E99B689414A22AA24254B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B498B9F9192F652F00CB4BCC /* ASMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTrack.h; sourceTree = "<group>"; };
 		B498B9FA192F652F00CB4BCC /* ASMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTrack.m; sourceTree = "<group>"; };
-		B49C88E1192FC55100F4D178 /* ASMTrack+ASMEchoNest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASMTrack+ASMEchoNest.h"; sourceTree = "<group>"; };
-		B49C88E2192FC55100F4D178 /* ASMTrack+ASMEchoNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASMTrack+ASMEchoNest.m"; sourceTree = "<group>"; };
+		B49C88E8192FDD6700F4D178 /* ASMTempoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTempoProvider.h; sourceTree = "<group>"; };
+		B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTempoProvider.m; sourceTree = "<group>"; };
+		B49C88EB192FDD7900F4D178 /* ASMEchoNestTempoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestTempoProvider.h; sourceTree = "<group>"; };
+		B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestTempoProvider.m; sourceTree = "<group>"; };
 		B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem+ASMHash.h"; sourceTree = "<group>"; };
 		B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem+ASMHash.m"; sourceTree = "<group>"; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,10 +106,19 @@
 			children = (
 				B498B9F9192F652F00CB4BCC /* ASMTrack.h */,
 				B498B9FA192F652F00CB4BCC /* ASMTrack.m */,
-				B49C88E1192FC55100F4D178 /* ASMTrack+ASMEchoNest.h */,
-				B49C88E2192FC55100F4D178 /* ASMTrack+ASMEchoNest.m */,
 			);
 			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		B49C88E7192FDD6700F4D178 /* Tempo Provider */ = {
+			isa = PBXGroup;
+			children = (
+				B49C88E8192FDD6700F4D178 /* ASMTempoProvider.h */,
+				B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */,
+				B49C88EB192FDD7900F4D178 /* ASMEchoNestTempoProvider.h */,
+				B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */,
+			);
+			path = "Tempo Provider";
 			sourceTree = "<group>";
 		};
 		B4D5C0D9192D89CF00D6DF4C = {
@@ -145,6 +157,7 @@
 		B4D5C0ED192D89CF00D6DF4C /* Pace */ = {
 			isa = PBXGroup;
 			children = (
+				B49C88E7192FDD6700F4D178 /* Tempo Provider */,
 				B498B9F8192F652F00CB4BCC /* Data Model */,
 				B4D5C0F6192D89CF00D6DF4C /* ASMAppDelegate.h */,
 				B4D5C0F7192D89CF00D6DF4C /* ASMAppDelegate.m */,
@@ -326,10 +339,11 @@
 				B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */,
 				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
 				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
-				B49C88E3192FC55100F4D178 /* ASMTrack+ASMEchoNest.m in Sources */,
 				B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */,
 				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
+				B49C88EA192FDD6700F4D178 /* ASMTempoProvider.m in Sources */,
 				B4E5362C192D8F1F00F4C59F /* ASMMusicInfoImporter.m in Sources */,
+				B49C88ED192FDD7900F4D178 /* ASMEchoNestTempoProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

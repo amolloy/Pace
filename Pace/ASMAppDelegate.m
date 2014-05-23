@@ -73,7 +73,8 @@
 				   @"    id           INTEGER PRIMARY KEY,"
 				   @"    duration     REAL NOT NULL,"
 				   @"    tempo        REAL,"
-				   @"    title        TEXT NOT NULL"
+				   @"    title        TEXT NOT NULL,"
+				   @"    lastTempoSearch REAL"
 				   @");"
 				   ]) failedAt(1);
 

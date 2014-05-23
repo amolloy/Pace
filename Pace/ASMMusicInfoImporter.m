@@ -11,6 +11,10 @@
 #import "NSArray+ASMAsyncEnumeration.h"
 #import "MPMediaItem+ASMHash.h"
 #import "ASMTrack.h"
+#import "ASMEchoNestTempoProvider.h"
+
+@interface ASMMusicInfoImporter () <NSURLSessionDelegate>
+@end
 
 @implementation ASMMusicInfoImporter
 
@@ -27,10 +31,7 @@
 -(void)blehUsingFCModel
 {
 	MPMediaQuery* query = [MPMediaQuery songsQuery];
-
-	NSMutableArray* itemsToLookup = [NSMutableArray array];
-
-	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+	ASMTempoProvider* tempoProvider = [[ASMEchoNestTempoProvider alloc] init];
 
 	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 	[query.items asm_enumerateObjectsAsynchronouslyWithOptions:0
@@ -48,56 +49,36 @@
 			 track = [self createTrackFCFromItem:mediaItem];
 		 }
 
-		 track.mediaItemPersistentID = [mediaItem valueForProperty:MPMediaItemPropertyPersistentID];
+		 track.mediaItem = mediaItem;
 
 		 if (!track.tempo)
 		 {
-			 [itemsToLookup addObject:track];
-			 NSLog(@"Need to look up %@", track.title);
+			 if (([NSDate timeIntervalSinceReferenceDate] - [track.lastTempoSearch timeIntervalSinceReferenceDate]) <= (60*60*24*7))
+			 {
+				 NSLog(@"Skipping %@, tried to recently", track.title);
+			 }
+			 else
+			 {
+				 [tempoProvider getTempoForArtist:track.artist
+											title:track.title
+									   completion:^(NSNumber *tempo, NSError *error) {
+										   NSLog(@"Got tempo %@ for track %@", tempo, track.title);
+										   if (tempo)
+										   {
+											   track.tempo = tempo;
+										   }
+										   else
+										   {
+											   track.lastTempoSearch = [NSDate date];
+										   }
+										   [track save];
+									   }];
+			 }
 		 }
 	 }
 													completion:^(NSUInteger stoppedIndex, NSError *error)
 	 {
-		 NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
-
-		 NSTimeInterval duration = end - start;
-		 NSInteger minutes = duration / 60;
-		 NSInteger seconds = (NSInteger)duration % 60;
-
-		 NSLog(@"Done in %@:%@", @(minutes), @(seconds));
-
-		 dispatch_async(dispatch_get_main_queue(), ^{
-			 [self gatherTempoForTracks:itemsToLookup];
-		 });
-	 }];
-}
-
--(void)gatherTempoForTracks:(NSArray*)tracks
-{
-	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-	[tracks asm_enumerateObjectsAsynchronouslyWithOptions:0
-												  onQueue:queue
-											 stepsPerLoop:10
-											   usingBlock:^(MPMediaItem* mediaItem, NSUInteger idx, BOOL *stop)
-	 {
-		 /*
-		  BYBMYPBQEOCNICHDI
-
-		  http://developer.echonest.com/api/v4/song/search\?api_key\=BYBMYPBQEOCNICHDI\&format\=json\&results\=1\&artist\=gorillaz\&title\=white%20light\&bucket\=audio_summary
-		  */
-
-	 }
-											   completion:^(NSUInteger stoppedIndex, NSError *error)
-	 {
-		 NSTimeInterval end = [NSDate timeIntervalSinceReferenceDate];
-
-		 NSTimeInterval duration = end - start;
-		 NSInteger minutes = duration / 60;
-		 NSInteger seconds = (NSInteger)duration % 60;
-
-		 NSLog(@"Done in %@:%@", @(minutes), @(seconds));
+		 NSLog(@"done");
 	 }];
 }
 
