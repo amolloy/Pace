@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B498B9FA192F652F00CB4BCC /* ASMTrack.m */; };
+		B49C88E3192FC55100F4D178 /* ASMTrack+ASMEchoNest.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88E2192FC55100F4D178 /* ASMTrack+ASMEchoNest.m */; };
 		B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */; };
 		B4D5C0E6192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
@@ -43,6 +44,8 @@
 		252E99B689414A22AA24254B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B498B9F9192F652F00CB4BCC /* ASMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTrack.h; sourceTree = "<group>"; };
 		B498B9FA192F652F00CB4BCC /* ASMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTrack.m; sourceTree = "<group>"; };
+		B49C88E1192FC55100F4D178 /* ASMTrack+ASMEchoNest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASMTrack+ASMEchoNest.h"; sourceTree = "<group>"; };
+		B49C88E2192FC55100F4D178 /* ASMTrack+ASMEchoNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASMTrack+ASMEchoNest.m"; sourceTree = "<group>"; };
 		B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem+ASMHash.h"; sourceTree = "<group>"; };
 		B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem+ASMHash.m"; sourceTree = "<group>"; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +103,8 @@
 			children = (
 				B498B9F9192F652F00CB4BCC /* ASMTrack.h */,
 				B498B9FA192F652F00CB4BCC /* ASMTrack.m */,
+				B49C88E1192FC55100F4D178 /* ASMTrack+ASMEchoNest.h */,
+				B49C88E2192FC55100F4D178 /* ASMTrack+ASMEchoNest.m */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */,
 				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
 				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
+				B49C88E3192FC55100F4D178 /* ASMTrack+ASMEchoNest.m in Sources */,
 				B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */,
 				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
 				B4E5362C192D8F1F00F4C59F /* ASMMusicInfoImporter.m in Sources */,
