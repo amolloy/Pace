@@ -95,8 +95,8 @@ static NSString* const ASMEchoNestURL = @"http://developer.echonest.com/api/v4/s
 				  }
 				  else
 				  {
-					  NSDictionary* response = info[@"response"];
-					  NSArray* songs = response[@"songs"];
+					  NSDictionary* responseDict = info[@"response"];
+					  NSArray* songs = responseDict[@"songs"];
 					  NSDictionary* song = songs.firstObject;
 					  NSDictionary* audioSummary = song[@"audio_summary"];
 					  NSString* tempoStr = audioSummary[@"tempo"];

@@ -51,6 +51,7 @@
 		B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestTempoProvider.m; sourceTree = "<group>"; };
 		B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem+ASMHash.h"; sourceTree = "<group>"; };
 		B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem+ASMHash.m"; sourceTree = "<group>"; };
+		B4BB7C541930BAAE005DD5B9 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = SOURCE_ROOT; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +178,7 @@
 		B4D5C0EE192D89CF00D6DF4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4BB7C541930BAAE005DD5B9 /* Warnings.xcconfig */,
 				B4D5C0EF192D89CF00D6DF4C /* Pace-Info.plist */,
 				B4D5C0F0192D89CF00D6DF4C /* InfoPlist.strings */,
 				B4D5C0F3192D89CF00D6DF4C /* main.m */,
@@ -395,6 +397,7 @@
 /* Begin XCBuildConfiguration section */
 		B4D5C11B192D89CF00D6DF4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4BB7C541930BAAE005DD5B9 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
