@@ -61,8 +61,10 @@
 
 		// My custom failure handling. Yours may vary.
 		void (^failedAt)(int statement) = ^(int statement){
+#if DEBUG
 			int lastErrorCode = db.lastErrorCode;
 			NSString *lastErrorMessage = db.lastErrorMessage;
+#endif
 			[db rollback];
 			NSAssert3(0, @"Migration statement %d failed, code %d: %@", statement, lastErrorCode, lastErrorMessage);
 		};
