@@ -55,31 +55,28 @@
 		 {
 			 if (([NSDate timeIntervalSinceReferenceDate] - [track.lastTempoSearch timeIntervalSinceReferenceDate]) <= (60*60*24*7))
 			 {
-				 NSLog(@"Skipping %@, tried to recently", track.title);
+				 // Do nothing, we checked this one too recently.
 			 }
 			 else
 			 {
 				 [tempoProvider getTempoForArtist:track.artist
 											title:track.title
-									   completion:^(NSNumber *tempo, NSError *error) {
-										   NSLog(@"Got tempo %@ for track %@", tempo, track.title);
-										   if (tempo)
-										   {
-											   track.tempo = tempo;
-										   }
-										   else
-										   {
-											   track.lastTempoSearch = [NSDate date];
-										   }
-										   [track save];
-									   }];
+									   completion:^(NSNumber *tempo, NSError *error)
+				 {
+					 if (tempo)
+					 {
+						 track.tempo = tempo;
+					 }
+					 else
+					 {
+						 track.lastTempoSearch = [NSDate date];
+					 }
+					 [track save];
+				 }];
 			 }
 		 }
 	 }
-													completion:^(NSUInteger stoppedIndex, NSError *error)
-	 {
-		 NSLog(@"done");
-	 }];
+													completion:nil];
 }
 
 @end
