@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^blehCompletion)();
+
 @interface ASMMusicInfoImporter : NSObject
 
--(void)blehUsingFCModel;
+-(void)blehUsingFCModelCompletion:(blehCompletion)completion;
 
 @end

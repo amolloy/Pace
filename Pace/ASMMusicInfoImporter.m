@@ -28,7 +28,7 @@
 	return newTrack;
 }
 
--(void)blehUsingFCModel
+-(void)blehUsingFCModelCompletion:(blehCompletion)completion
 {
 	MPMediaQuery* query = [MPMediaQuery songsQuery];
 	ASMTempoProvider* tempoProvider = [[ASMEchoNestTempoProvider alloc] init];
@@ -76,7 +76,13 @@
 			 }
 		 }
 	 }
-													completion:nil];
+													completion:^(NSUInteger stoppedIndex, NSError *error)
+	{
+		if (completion)
+		{
+			completion();
+		}
+	}];
 }
 
 @end
