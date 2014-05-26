@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */; };
 		B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B498B9FA192F652F00CB4BCC /* ASMTrack.m */; };
 		B49C88EA192FDD6700F4D178 /* ASMTempoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */; };
 		B49C88ED192FDD7900F4D178 /* ASMEchoNestTempoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		0984905DDCAD47118410A59B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		252E99B689414A22AA24254B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMPlaylistBuilder.h; sourceTree = "<group>"; };
+		B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMPlaylistBuilder.m; sourceTree = "<group>"; };
 		B498B9F9192F652F00CB4BCC /* ASMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTrack.h; sourceTree = "<group>"; };
 		B498B9FA192F652F00CB4BCC /* ASMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTrack.m; sourceTree = "<group>"; };
 		B49C88E8192FDD6700F4D178 /* ASMTempoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTempoProvider.h; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				B4E5362B192D8F1F00F4C59F /* ASMMusicInfoImporter.m */,
 				B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */,
 				B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */,
+				B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */,
+				B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */,
 			);
 			path = Pace;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */,
 				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
 				B49C88EA192FDD6700F4D178 /* ASMTempoProvider.m in Sources */,
+				B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */,
 				B4E5362C192D8F1F00F4C59F /* ASMMusicInfoImporter.m in Sources */,
 				B49C88ED192FDD7900F4D178 /* ASMEchoNestTempoProvider.m in Sources */,
 			);
