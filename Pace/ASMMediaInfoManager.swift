@@ -19,6 +19,62 @@ class ASMMediaInfoManager: NSObject {
 
 		return ASMTrack(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
 	}
-	
-	
+
+	func updateMediaDatabase(completion: ()->())
+	{
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+			{
+				let query = MPMediaQuery.songsQuery()
+
+				/* TODO
+				ASMEchoNestManager* enManager = [ASMEchoNestManager sharedInstance];
+				id tempoRequestToken = [enManager startBatch];
+				*/
+
+				for mediaItemObjC : AnyObject in query.items
+				{
+					let mediaItem = mediaItemObjC as MPMediaItem
+					let digest = mediaItem.digest()
+					let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) as NSNumber
+
+					let tracks = ASMTrack.instancesWhere("id = ? AND duration = ? LIMIT 1", arguments: [digest, duration]);
+					var track : ASMTrack
+					if tracks.count != 0
+					{
+						track = tracks[0] as ASMTrack
+						let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
+						if newPersistentID !== track.persistentID
+						{
+							track.persistentID = newPersistentID
+							track.save()
+						}
+					}
+					else
+					{
+						track = self.createTrackFCFromItem(mediaItem);
+					}
+
+					if track.tempo == -1
+					{
+						if ((NSDate.timeIntervalSinceReferenceDate() - track.lastTempoSearch.timeIntervalSinceReferenceDate) <= (60*60*24*7))
+						{
+							// Do nothing, we checked this one too recently.
+						}
+						else
+						{
+							/* TODO
+							[enManager addTrack:track
+							toBatch:tempoRequestToken];
+							*/
+						}
+					}
+				}
+
+				/* TODO
+				[enManager finishBatch];
+				*/
+
+				completion()
+			});
+	}
 }
