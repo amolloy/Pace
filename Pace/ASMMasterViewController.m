@@ -7,7 +7,8 @@
 //
 
 #import "ASMMasterViewController.h"
-#import "ASMTrack.h"
+#import "FCModel.h"
+#import "Pace-Swift.h"
 
 @interface ASMMasterViewController ()
 @property (nonatomic, strong) NSArray* tracks;

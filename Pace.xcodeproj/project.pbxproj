@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */; };
-		B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B498B9FA192F652F00CB4BCC /* ASMTrack.m */; };
-		B49C88EA192FDD6700F4D178 /* ASMTempoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */; };
-		B49C88ED192FDD7900F4D178 /* ASMEchoNestTempoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */; };
 		B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */; };
+		B4A17E3D1939F7F6009A857A /* ASMEchoNestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */; };
+		B4A17E401939FA83009A857A /* ASMEchoNestTempoQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A17E3F1939FA83009A857A /* ASMEchoNestTempoQueue.m */; };
 		B4D5C0E6192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
 		B4D5C0EA192D89CF00D6DF4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E9192D89CF00D6DF4C /* UIKit.framework */; };
@@ -28,6 +27,9 @@
 		B4D5C118192D89CF00D6DF4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D5C116192D89CF00D6DF4C /* InfoPlist.strings */; };
 		B4D5C11A192D89CF00D6DF4C /* PaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D5C119192D89CF00D6DF4C /* PaceTests.m */; };
 		B4E5362C192D8F1F00F4C59F /* ASMMusicInfoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E5362B192D8F1F00F4C59F /* ASMMusicInfoImporter.m */; };
+		B4F0E817193D5F65008015D5 /* ASMMediaInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E816193D5F65008015D5 /* ASMMediaInfoManager.swift */; };
+		B4F0E81E193E0120008015D5 /* ASMTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E81D193E0120008015D5 /* ASMTrack.swift */; };
+		B4F0E820193E6136008015D5 /* paceFC.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */; };
 		F89900A3284343A08C26357B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 252E99B689414A22AA24254B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,14 +48,14 @@
 		252E99B689414A22AA24254B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMPlaylistBuilder.h; sourceTree = "<group>"; };
 		B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMPlaylistBuilder.m; sourceTree = "<group>"; };
-		B498B9F9192F652F00CB4BCC /* ASMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTrack.h; sourceTree = "<group>"; };
-		B498B9FA192F652F00CB4BCC /* ASMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTrack.m; sourceTree = "<group>"; };
-		B49C88E8192FDD6700F4D178 /* ASMTempoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMTempoProvider.h; sourceTree = "<group>"; };
-		B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMTempoProvider.m; sourceTree = "<group>"; };
 		B49C88EB192FDD7900F4D178 /* ASMEchoNestTempoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestTempoProvider.h; sourceTree = "<group>"; };
 		B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestTempoProvider.m; sourceTree = "<group>"; };
 		B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem+ASMHash.h"; sourceTree = "<group>"; };
 		B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem+ASMHash.m"; sourceTree = "<group>"; };
+		B4A17E3B1939F7F6009A857A /* ASMEchoNestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestManager.h; sourceTree = "<group>"; };
+		B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestManager.m; sourceTree = "<group>"; };
+		B4A17E3E1939FA83009A857A /* ASMEchoNestTempoQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestTempoQueue.h; sourceTree = "<group>"; };
+		B4A17E3F1939FA83009A857A /* ASMEchoNestTempoQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestTempoQueue.m; sourceTree = "<group>"; };
 		B4BB7C541930BAAE005DD5B9 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = SOURCE_ROOT; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +79,10 @@
 		B4D5C119192D89CF00D6DF4C /* PaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaceTests.m; sourceTree = "<group>"; };
 		B4E5362A192D8F1F00F4C59F /* ASMMusicInfoImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMMusicInfoImporter.h; sourceTree = "<group>"; };
 		B4E5362B192D8F1F00F4C59F /* ASMMusicInfoImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMMusicInfoImporter.m; sourceTree = "<group>"; };
+		B4F0E815193D5F64008015D5 /* Pace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pace-Bridging-Header.h"; sourceTree = "<group>"; };
+		B4F0E816193D5F65008015D5 /* ASMMediaInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMMediaInfoManager.swift; sourceTree = "<group>"; };
+		B4F0E81D193E0120008015D5 /* ASMTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMTrack.swift; sourceTree = "<group>"; };
+		B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = paceFC.sqlite3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +114,8 @@
 		B498B9F8192F652F00CB4BCC /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				B498B9F9192F652F00CB4BCC /* ASMTrack.h */,
-				B498B9FA192F652F00CB4BCC /* ASMTrack.m */,
+				B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */,
+				B4F0E81D193E0120008015D5 /* ASMTrack.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -117,10 +123,12 @@
 		B49C88E7192FDD6700F4D178 /* Tempo Provider */ = {
 			isa = PBXGroup;
 			children = (
-				B49C88E8192FDD6700F4D178 /* ASMTempoProvider.h */,
-				B49C88E9192FDD6700F4D178 /* ASMTempoProvider.m */,
 				B49C88EB192FDD7900F4D178 /* ASMEchoNestTempoProvider.h */,
 				B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */,
+				B4A17E3B1939F7F6009A857A /* ASMEchoNestManager.h */,
+				B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */,
+				B4A17E3E1939FA83009A857A /* ASMEchoNestTempoQueue.h */,
+				B4A17E3F1939FA83009A857A /* ASMEchoNestTempoQueue.m */,
 			);
 			path = "Tempo Provider";
 			sourceTree = "<group>";
@@ -176,6 +184,8 @@
 				B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */,
 				B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */,
 				B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */,
+				B4F0E816193D5F65008015D5 /* ASMMediaInfoManager.swift */,
+				B4F0E815193D5F64008015D5 /* Pace-Bridging-Header.h */,
 			);
 			path = Pace;
 			sourceTree = "<group>";
@@ -292,6 +302,7 @@
 				B4D5C106192D89CF00D6DF4C /* Images.xcassets in Resources */,
 				B4D5C0F2192D89CF00D6DF4C /* InfoPlist.strings in Resources */,
 				B4D5C0FB192D89CF00D6DF4C /* Main.storyboard in Resources */,
+				B4F0E820193E6136008015D5 /* paceFC.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,14 +355,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */,
+				B4F0E81E193E0120008015D5 /* ASMTrack.swift in Sources */,
+				B4A17E3D1939F7F6009A857A /* ASMEchoNestManager.m in Sources */,
 				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
 				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
-				B498B9FB192F652F00CB4BCC /* ASMTrack.m in Sources */,
 				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
-				B49C88EA192FDD6700F4D178 /* ASMTempoProvider.m in Sources */,
+				B4A17E401939FA83009A857A /* ASMEchoNestTempoQueue.m in Sources */,
 				B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */,
+				B4F0E817193D5F65008015D5 /* ASMMediaInfoManager.swift in Sources */,
 				B4E5362C192D8F1F00F4C59F /* ASMMusicInfoImporter.m in Sources */,
-				B49C88ED192FDD7900F4D178 /* ASMEchoNestTempoProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +432,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -434,7 +447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -459,6 +472,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -466,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -478,10 +492,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pace/Pace-Prefix.pch";
 				INFOPLIST_FILE = "Pace/Pace-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pace/Pace-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -492,10 +510,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pace/Pace-Prefix.pch";
 				INFOPLIST_FILE = "Pace/Pace-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pace/Pace-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

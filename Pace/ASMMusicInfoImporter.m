@@ -10,19 +10,27 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "NSArray+ASMAsyncEnumeration.h"
 #import "MPMediaItem+ASMHash.h"
-#import "ASMTrack.h"
-#import "ASMEchoNestTempoProvider.h"
+#import "ASMEchoNestManager.h"
+#import "FCModel.h"
+#import "Pace-Swift.h"
 
 @interface ASMMusicInfoImporter () <NSURLSessionDelegate>
 @end
 
 @implementation ASMMusicInfoImporter
 
+/*
 -(ASMTrack*)createTrackFCFromItem:(MPMediaItem*)mediaItem
 {
-	ASMTrack* newTrack = [ASMTrack instanceWithPrimaryKey:[mediaItem digest]];
-	newTrack.title = [mediaItem valueForProperty:MPMediaItemPropertyTitle];
-	newTrack.duration = [[mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
+	NSNumber* digest = [mediaItem digest];
+	NSString* title = [mediaItem valueForProperty:MPMediaItemPropertyTitle];
+	NSTimeInterval duration = [[mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
+	NSNumber* persistentID = [mediaItem valueForProperty:MPMediaItemPropertyPersistentID];
+
+	ASMTrack* newTrack = [ASMTrack instanceWithPrimaryKey:digest
+													title:title
+												 duration:duration
+											 persistentID:persistentID];
 	[newTrack save];
 
 	return newTrack;
@@ -31,7 +39,9 @@
 -(void)blehUsingFCModelCompletion:(blehCompletion)completion
 {
 	MPMediaQuery* query = [MPMediaQuery songsQuery];
-	ASMTempoProvider* tempoProvider = [[ASMEchoNestTempoProvider alloc] init];
+
+	ASMEchoNestManager* enManager = [ASMEchoNestManager sharedInstance];
+	id tempoRequestToken = [enManager startBatch];
 
 	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 	[query.items asm_enumerateObjectsAsynchronouslyWithOptions:0
@@ -44,12 +54,14 @@
 
 		 ASMTrack* track = [ASMTrack firstInstanceWhere:@"id = ? AND duration = ? LIMIT 1", digest, duration];
 
-		 if (!track)
+		 if (track)
+		 {
+			 track.persistentID = [mediaItem valueForProperty:MPMediaItemPropertyPersistentID];
+		 }
+		 else
 		 {
 			 track = [self createTrackFCFromItem:mediaItem];
 		 }
-
-		 track.mediaItem = mediaItem;
 
 		 if (!track.tempo)
 		 {
@@ -59,30 +71,20 @@
 			 }
 			 else
 			 {
-				 [tempoProvider getTempoForArtist:track.artist
-											title:track.title
-									   completion:^(NSNumber *tempo, NSError *error)
-				 {
-					 if (tempo)
-					 {
-						 track.tempo = tempo;
-					 }
-					 else
-					 {
-						 track.lastTempoSearch = [NSDate date];
-					 }
-					 [track save];
-				 }];
+				 [enManager addTrack:track
+							 toBatch:tempoRequestToken];
 			 }
 		 }
 	 }
 													completion:^(NSUInteger stoppedIndex, NSError *error)
 	{
+		[enManager finishBatch];
 		if (completion)
 		{
 			completion();
 		}
 	}];
 }
+ */
 
 @end

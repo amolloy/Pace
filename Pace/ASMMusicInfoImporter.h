@@ -12,6 +12,8 @@ typedef void(^blehCompletion)();
 
 @interface ASMMusicInfoImporter : NSObject
 
+/*
 -(void)blehUsingFCModelCompletion:(blehCompletion)completion;
+*/
 
 @end
