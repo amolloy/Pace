@@ -100,7 +100,8 @@
 			NSAssert3(0, @"Migration statement %d failed, code %d: %@", statement, lastErrorCode, lastErrorMessage);
 		};
 
-		if (*schemaVersion < 1) {
+		if (*schemaVersion < 1)
+		{
 			if (! [db executeUpdate:
 				   @"CREATE TABLE ASMTrack ("
 				   @"    id           INTEGER PRIMARY KEY,"
@@ -109,20 +110,29 @@
 				   @"    title        TEXT NOT NULL,"
 				   @"    lastTempoSearch REAL"
 				   @");"
-				   ]) failedAt(1);
+				   ])
+			{
+				failedAt(1);
+			}
 
-			if (! [db executeUpdate:@"CREATE INDEX IF NOT EXISTS duration ON ASMTrack (duration);"]) failedAt(2);
-
+			if (! [db executeUpdate:@"CREATE INDEX IF NOT EXISTS duration ON ASMTrack (duration);"])
+			{
+				failedAt(2);
+			}
 			*schemaVersion = 1;
 		}
 
-		// If you wanted to change the schema in a later app version, you'd add something like this here:
-		/*
-		 if (*schemaVersion < 2) {
-		 if (! [db executeUpdate:@"ALTER TABLE Person ADD COLUMN title TEXT NOT NULL DEFAULT ''"]) failedAt(3);
-		 *schemaVersion = 2;
+		 if (*schemaVersion < 2)
+		 {
+			 if (![db executeUpdate:@"ALTER TABLE ASMTrack ADD COLUMN persistentID INTEGER"])
+			 {
+				  failedAt(3);
+			 }
+			 *schemaVersion = 2;
 		 }
 
+		// If you wanted to change the schema in a later app version, you'd add something like this here:
+		/*
 		 // And so on...
 		 if (*schemaVersion < 3) {
 		 if (! [db executeUpdate:@"CREATE TABLE..."]) failedAt(4);
