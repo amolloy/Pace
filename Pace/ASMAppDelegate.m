@@ -53,8 +53,15 @@
 
 - (void)setupFCModel
 {
-	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"paceFC.sqlite3"];
+	NSURL* dbURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"paceFC.sqlite3"];
+	NSString *dbPath = [dbURL path];
+
+#if 0
+	NSURL* seedURL = [[NSBundle mainBundle] URLForResource:@"paceFC" withExtension:@"sqlite3"];
+	[[NSFileManager defaultManager] copyItemAtURL:seedURL
+											toURL:dbURL
+											error:nil];
+#endif
 
 	[FCModel openDatabaseAtPath:dbPath withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
 		[db beginTransaction];
