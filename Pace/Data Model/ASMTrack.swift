@@ -27,7 +27,7 @@ class ASMTrack: FCModel {
 		self.title = title
 		self.duration = duration
 		self.mediaItem = mediaItem
-		self.tempo = 0
+		self.tempo = -1
 		self.lastTempoSearch = NSDate(timeIntervalSinceReferenceDate: 0)
 		self.persistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
 	}
