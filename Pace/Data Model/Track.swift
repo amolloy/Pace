@@ -9,8 +9,7 @@
 import UIKit
 import MediaPlayer
 
-@objc(ASMTrack)
-class ASMTrack: FCModel {
+class Track: FCModel {
 	var id: NSNumber
 	var title: String
 	var duration: NSNumber
@@ -20,8 +19,7 @@ class ASMTrack: FCModel {
 	var tempo: NSNumber
 	var lastTempoSearch: NSDate
 
-	init(primaryKey: NSNumber, title : String,
-		duration : NSTimeInterval, mediaItem : MPMediaItem)
+	init(primaryKey: NSNumber, title : String, duration : NSTimeInterval, mediaItem : MPMediaItem)
 	{
 		self.id = primaryKey
 		self.title = title

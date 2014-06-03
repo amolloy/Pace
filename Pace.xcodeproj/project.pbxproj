@@ -26,8 +26,8 @@
 		B4D5C110192D89CF00D6DF4C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0EB192D89CF00D6DF4C /* CoreData.framework */; };
 		B4D5C118192D89CF00D6DF4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D5C116192D89CF00D6DF4C /* InfoPlist.strings */; };
 		B4D5C11A192D89CF00D6DF4C /* PaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D5C119192D89CF00D6DF4C /* PaceTests.m */; };
-		B4F0E817193D5F65008015D5 /* ASMMediaInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E816193D5F65008015D5 /* ASMMediaInfoManager.swift */; };
-		B4F0E81E193E0120008015D5 /* ASMTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E81D193E0120008015D5 /* ASMTrack.swift */; };
+		B4F0E817193D5F65008015D5 /* MediaInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E816193D5F65008015D5 /* MediaInfoManager.swift */; };
+		B4F0E81E193E0120008015D5 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E81D193E0120008015D5 /* Track.swift */; };
 		B4F0E820193E6136008015D5 /* paceFC.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */; };
 		F89900A3284343A08C26357B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 252E99B689414A22AA24254B /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -77,8 +77,8 @@
 		B4D5C117192D89CF00D6DF4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4D5C119192D89CF00D6DF4C /* PaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaceTests.m; sourceTree = "<group>"; };
 		B4F0E815193D5F64008015D5 /* Pace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pace-Bridging-Header.h"; sourceTree = "<group>"; };
-		B4F0E816193D5F65008015D5 /* ASMMediaInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMMediaInfoManager.swift; sourceTree = "<group>"; };
-		B4F0E81D193E0120008015D5 /* ASMTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMTrack.swift; sourceTree = "<group>"; };
+		B4F0E816193D5F65008015D5 /* MediaInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaInfoManager.swift; sourceTree = "<group>"; };
+		B4F0E81D193E0120008015D5 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = paceFC.sqlite3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */,
-				B4F0E81D193E0120008015D5 /* ASMTrack.swift */,
+				B4F0E81D193E0120008015D5 /* Track.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 				B49E03BC192E222400C5ED47 /* MPMediaItem+ASMHash.m */,
 				B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */,
 				B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */,
-				B4F0E816193D5F65008015D5 /* ASMMediaInfoManager.swift */,
+				B4F0E816193D5F65008015D5 /* MediaInfoManager.swift */,
 				B4F0E815193D5F64008015D5 /* Pace-Bridging-Header.h */,
 			);
 			path = Pace;
@@ -350,14 +350,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */,
-				B4F0E81E193E0120008015D5 /* ASMTrack.swift in Sources */,
+				B4F0E81E193E0120008015D5 /* Track.swift in Sources */,
 				B4A17E3D1939F7F6009A857A /* ASMEchoNestManager.m in Sources */,
 				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
 				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
 				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
 				B4A17E401939FA83009A857A /* ASMEchoNestTempoQueue.m in Sources */,
 				B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */,
-				B4F0E817193D5F65008015D5 /* ASMMediaInfoManager.swift in Sources */,
+				B4F0E817193D5F65008015D5 /* MediaInfoManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

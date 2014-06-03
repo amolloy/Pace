@@ -9,15 +9,15 @@
 import UIKit
 import MediaPlayer
 
-class ASMMediaInfoManager: NSObject {
-	func createTrackFCFromItem(mediaItem: MPMediaItem) -> ASMTrack
+class MediaInfoManager: NSObject {
+	func createTrackFCFromItem(mediaItem: MPMediaItem) -> Track
 	{
 		let digest = mediaItem.digest()
 		let title = mediaItem.valueForProperty(MPMediaItemPropertyTitle) as String
 		let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration).doubleValue as NSTimeInterval
 		let persistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
 
-		return ASMTrack(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
+		return Track(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
 	}
 
 	func updateMediaDatabase(completion: ()->())
@@ -37,11 +37,11 @@ class ASMMediaInfoManager: NSObject {
 					let digest = mediaItem.digest()
 					let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) as NSNumber
 
-					let tracks = ASMTrack.instancesWhere("id = ? AND duration = ? LIMIT 1", arguments: [digest, duration]);
-					var track : ASMTrack
+					let tracks = Track.instancesWhere("id = ? AND duration = ? LIMIT 1", arguments: [digest, duration]);
+					var track : Track
 					if tracks.count != 0
 					{
-						track = tracks[0] as ASMTrack
+						track = tracks[0] as Track
 						let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
 						if newPersistentID !== track.persistentID
 						{

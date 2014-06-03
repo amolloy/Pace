@@ -29,7 +29,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-	self.tracks = [ASMTrack instancesOrderedBy:@"title"];
+	self.tracks = [Track instancesOrderedBy:@"title"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,7 +37,7 @@
 	[NSNotificationCenter.defaultCenter addObserver:self
 										   selector:@selector(modelDidUpdate:)
 											   name:FCModelInsertNotification
-											 object:ASMTrack.class];
+											 object:Track.class];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -45,10 +45,10 @@
 	[super viewWillDisappear:animated];
 	[NSNotificationCenter.defaultCenter removeObserver:self
 												  name:FCModelInsertNotification
-												object:ASMTrack.class];
+												object:Track.class];
 	[NSNotificationCenter.defaultCenter removeObserver:self
 												  name:FCModelUpdateNotification
-												object:ASMTrack.class];
+												object:Track.class];
 }
 
 - (void)modelDidUpdate:(NSNotification*)notification
@@ -76,7 +76,7 @@
 - (void)reloadAllData
 {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		self.tracks = [ASMTrack instancesOrderedBy:@"title"];
+		self.tracks = [Track instancesOrderedBy:@"title"];
 		[self.tableView performSelectorOnMainThread:@selector(reloadData)
 										 withObject:nil
 									  waitUntilDone:NO];
@@ -116,7 +116,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-	ASMTrack* track = self.tracks[indexPath.row];
+	Track* track = self.tracks[indexPath.row];
 
     cell.textLabel.text = track.title;
 	cell.detailTextLabel.text = [track.tempo description];
