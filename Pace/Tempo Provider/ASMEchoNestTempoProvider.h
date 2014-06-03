@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Andrew Molloy. All rights reserved.
 //
 
-#import "ASMTempoProvider.h"
+@interface ASMEchoNestTempoProvider : NSObject
 
-@interface ASMEchoNestTempoProvider : ASMTempoProvider
+
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "ASMPlaylistBuilder.h"
-#import "ASMTrack.h"
+#import "FCModel.h"
+#import "Pace-Swift.h"
 
 static const NSInteger sTEMPTargetBPM = 153;
 static const NSInteger sTEMPVariance = 5;

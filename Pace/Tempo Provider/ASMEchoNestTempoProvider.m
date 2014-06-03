@@ -8,8 +8,6 @@
 
 #import "ASMEchoNestTempoProvider.h"
 
-static NSString* const ASMEchoNestAPIKey = @"BYBMYPBQEOCNICHDI";
-static NSString* const ASMEchoNestURL = @"http://developer.echonest.com/api/v4/song/search";
 
 @interface ASMEchoNestTempoProvider ()
 @end
@@ -39,6 +37,12 @@ static NSString* const ASMEchoNestURL = @"http://developer.echonest.com/api/v4/s
 
 	return sSession;
 }
+
+-(void)getTempoForTrack:(ASMTrack*)track
+{
+	
+}
+
 
 -(void)getTempoForArtist:(NSString*)artist
 				   title:(NSString*)title
