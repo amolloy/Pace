@@ -11,16 +11,40 @@
 #import "ASMMasterViewController.h"
 #import "ASMMusicInfoImporter.h"
 #import "FCModel.h"
+#import "ASMPlaylistBuilder.h"
+//#import <MessageUI/MessageUI.h>
 
 @implementation ASMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	ASMMusicInfoImporter* meh = [[ASMMusicInfoImporter alloc] init];
-
 	[self setupFCModel];
-	[meh blehUsingFCModel];
 
+	/*
+	MFMailComposeViewController* mfc = [[MFMailComposeViewController alloc] init];
+	[mfc setSubject:@"Poo"];
+
+	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"paceFC.sqlite3"];
+	NSData* data = [NSData dataWithContentsOfFile:dbPath];
+
+	[mfc addAttachmentData:data
+				  mimeType:@"application/x-sqlite3"
+				  fileName:@"paceFC.sqlite3"];
+
+	[self.window.rootViewController presentViewController:mfc
+												 animated:NO completion:^{
+
+												 }];
+	 */
+
+	/*
+	ASMMusicInfoImporter* meh = [[ASMMusicInfoImporter alloc] init];
+	[meh blehUsingFCModelCompletion:^{
+		[[ASMPlaylistBuilder new] buildPlaylist];
+	}];
+*/
+	
     return YES;
 }
 							
