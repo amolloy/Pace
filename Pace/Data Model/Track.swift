@@ -9,7 +9,7 @@
 import UIKit
 import MediaPlayer
 
-class Track: FCModel {
+@objc(Track) class Track: FCModel {
 	var id: NSNumber
 	var title: String
 	var duration: NSNumber

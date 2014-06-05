@@ -15,10 +15,7 @@
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
 		B4D5C0EA192D89CF00D6DF4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E9192D89CF00D6DF4C /* UIKit.framework */; };
 		B4D5C0F2192D89CF00D6DF4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D5C0F0192D89CF00D6DF4C /* InfoPlist.strings */; };
-		B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D5C0F3192D89CF00D6DF4C /* main.m */; };
-		B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D5C0F7192D89CF00D6DF4C /* ASMAppDelegate.m */; };
 		B4D5C0FB192D89CF00D6DF4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D5C0F9192D89CF00D6DF4C /* Main.storyboard */; };
-		B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D5C100192D89CF00D6DF4C /* ASMMasterViewController.m */; };
 		B4D5C106192D89CF00D6DF4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D5C105192D89CF00D6DF4C /* Images.xcassets */; };
 		B4D5C10D192D89CF00D6DF4C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C10C192D89CF00D6DF4C /* XCTest.framework */; };
 		B4D5C10E192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
@@ -29,6 +26,8 @@
 		B4F0E817193D5F65008015D5 /* MediaInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E816193D5F65008015D5 /* MediaInfoManager.swift */; };
 		B4F0E81E193E0120008015D5 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E81D193E0120008015D5 /* Track.swift */; };
 		B4F0E820193E6136008015D5 /* paceFC.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */; };
+		B4F0E823193E7874008015D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E821193E7874008015D5 /* AppDelegate.swift */; };
+		B4F0E828193F4746008015D5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0E822193E7874008015D5 /* MasterViewController.swift */; };
 		F89900A3284343A08C26357B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 252E99B689414A22AA24254B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,13 +62,8 @@
 		B4D5C0EB192D89CF00D6DF4C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B4D5C0EF192D89CF00D6DF4C /* Pace-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pace-Info.plist"; sourceTree = "<group>"; };
 		B4D5C0F1192D89CF00D6DF4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B4D5C0F3192D89CF00D6DF4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B4D5C0F5192D89CF00D6DF4C /* Pace-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pace-Prefix.pch"; sourceTree = "<group>"; };
-		B4D5C0F6192D89CF00D6DF4C /* ASMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASMAppDelegate.h; sourceTree = "<group>"; };
-		B4D5C0F7192D89CF00D6DF4C /* ASMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASMAppDelegate.m; sourceTree = "<group>"; };
 		B4D5C0FA192D89CF00D6DF4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B4D5C0FF192D89CF00D6DF4C /* ASMMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASMMasterViewController.h; sourceTree = "<group>"; };
-		B4D5C100192D89CF00D6DF4C /* ASMMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASMMasterViewController.m; sourceTree = "<group>"; };
 		B4D5C105192D89CF00D6DF4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B4D5C10B192D89CF00D6DF4C /* PaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D5C10C192D89CF00D6DF4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -80,6 +74,8 @@
 		B4F0E816193D5F65008015D5 /* MediaInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaInfoManager.swift; sourceTree = "<group>"; };
 		B4F0E81D193E0120008015D5 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = paceFC.sqlite3; sourceTree = "<group>"; };
+		B4F0E821193E7874008015D5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B4F0E822193E7874008015D5 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,13 +162,11 @@
 		B4D5C0ED192D89CF00D6DF4C /* Pace */ = {
 			isa = PBXGroup;
 			children = (
+				B4F0E821193E7874008015D5 /* AppDelegate.swift */,
 				B49C88E7192FDD6700F4D178 /* Tempo Provider */,
 				B498B9F8192F652F00CB4BCC /* Data Model */,
-				B4D5C0F6192D89CF00D6DF4C /* ASMAppDelegate.h */,
-				B4D5C0F7192D89CF00D6DF4C /* ASMAppDelegate.m */,
 				B4D5C0F9192D89CF00D6DF4C /* Main.storyboard */,
-				B4D5C0FF192D89CF00D6DF4C /* ASMMasterViewController.h */,
-				B4D5C100192D89CF00D6DF4C /* ASMMasterViewController.m */,
+				B4F0E822193E7874008015D5 /* MasterViewController.swift */,
 				B4D5C105192D89CF00D6DF4C /* Images.xcassets */,
 				B4D5C0EE192D89CF00D6DF4C /* Supporting Files */,
 				B49E03BB192E222400C5ED47 /* MPMediaItem+ASMHash.h */,
@@ -191,7 +185,6 @@
 				B4BB7C541930BAAE005DD5B9 /* Warnings.xcconfig */,
 				B4D5C0EF192D89CF00D6DF4C /* Pace-Info.plist */,
 				B4D5C0F0192D89CF00D6DF4C /* InfoPlist.strings */,
-				B4D5C0F3192D89CF00D6DF4C /* main.m */,
 				B4D5C0F5192D89CF00D6DF4C /* Pace-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -349,14 +342,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4D5C101192D89CF00D6DF4C /* ASMMasterViewController.m in Sources */,
 				B4F0E81E193E0120008015D5 /* Track.swift in Sources */,
 				B4A17E3D1939F7F6009A857A /* ASMEchoNestManager.m in Sources */,
 				B49E03BD192E222400C5ED47 /* MPMediaItem+ASMHash.m in Sources */,
-				B4D5C0F8192D89CF00D6DF4C /* ASMAppDelegate.m in Sources */,
-				B4D5C0F4192D89CF00D6DF4C /* main.m in Sources */,
 				B4A17E401939FA83009A857A /* ASMEchoNestTempoQueue.m in Sources */,
+				B4F0E828193F4746008015D5 /* MasterViewController.swift in Sources */,
 				B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */,
+				B4F0E823193E7874008015D5 /* AppDelegate.swift in Sources */,
 				B4F0E817193D5F65008015D5 /* MediaInfoManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
