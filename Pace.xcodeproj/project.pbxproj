@@ -47,8 +47,6 @@
 		B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMPlaylistBuilder.h; sourceTree = "<group>"; };
 		B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMPlaylistBuilder.m; sourceTree = "<group>"; };
 		B46D5638194092A800221129 /* MPMediaItem+ASMHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MPMediaItem+ASMHash.swift"; sourceTree = "<group>"; };
-		B49C88EB192FDD7900F4D178 /* ASMEchoNestTempoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestTempoProvider.h; sourceTree = "<group>"; };
-		B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestTempoProvider.m; sourceTree = "<group>"; };
 		B4A17E3B1939F7F6009A857A /* ASMEchoNestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestManager.h; sourceTree = "<group>"; };
 		B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestManager.m; sourceTree = "<group>"; };
 		B4A17E3E1939FA83009A857A /* ASMEchoNestTempoQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestTempoQueue.h; sourceTree = "<group>"; };
@@ -115,8 +113,6 @@
 		B49C88E7192FDD6700F4D178 /* Tempo Provider */ = {
 			isa = PBXGroup;
 			children = (
-				B49C88EB192FDD7900F4D178 /* ASMEchoNestTempoProvider.h */,
-				B49C88EC192FDD7900F4D178 /* ASMEchoNestTempoProvider.m */,
 				B4A17E3B1939F7F6009A857A /* ASMEchoNestManager.h */,
 				B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */,
 				B4A17E3E1939FA83009A857A /* ASMEchoNestTempoQueue.h */,
