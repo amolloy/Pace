@@ -3,4 +3,5 @@
 //
 
 #import "FCModel.h"
-#import "MPMediaItem+ASMHash.h"
+#import "MediaPlayer/MediaPlayer.h"
+#import "NSString+ASMCityHash.h"
