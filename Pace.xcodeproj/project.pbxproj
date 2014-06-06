@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */; };
 		B46D5639194092A800221129 /* MPMediaItem+ASMHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46D5638194092A800221129 /* MPMediaItem+ASMHash.swift */; };
-		B4A17E3D1939F7F6009A857A /* ASMEchoNestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */; };
-		B4A17E401939FA83009A857A /* ASMEchoNestTempoQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A17E3F1939FA83009A857A /* ASMEchoNestTempoQueue.m */; };
+		B46D563B194095FD00221129 /* EchoNestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46D563A194095FD00221129 /* EchoNestManager.swift */; };
+		B46D563D19409DAF00221129 /* EchoNestTempoWorkQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46D563C19409DAF00221129 /* EchoNestTempoWorkQueue.swift */; };
 		B4D5C0E6192D89CF00D6DF4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E5192D89CF00D6DF4C /* Foundation.framework */; };
 		B4D5C0E8192D89CF00D6DF4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E7192D89CF00D6DF4C /* CoreGraphics.framework */; };
 		B4D5C0EA192D89CF00D6DF4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5C0E9192D89CF00D6DF4C /* UIKit.framework */; };
@@ -47,9 +47,8 @@
 		B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMPlaylistBuilder.h; sourceTree = "<group>"; };
 		B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMPlaylistBuilder.m; sourceTree = "<group>"; };
 		B46D5638194092A800221129 /* MPMediaItem+ASMHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MPMediaItem+ASMHash.swift"; sourceTree = "<group>"; };
-		B4A17E3B1939F7F6009A857A /* ASMEchoNestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestManager.h; sourceTree = "<group>"; };
-		B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestManager.m; sourceTree = "<group>"; };
-		B4A17E3E1939FA83009A857A /* ASMEchoNestTempoQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMEchoNestTempoQueue.h; sourceTree = "<group>"; };
+		B46D563A194095FD00221129 /* EchoNestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchoNestManager.swift; sourceTree = "<group>"; };
+		B46D563C19409DAF00221129 /* EchoNestTempoWorkQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchoNestTempoWorkQueue.swift; sourceTree = "<group>"; };
 		B4A17E3F1939FA83009A857A /* ASMEchoNestTempoQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMEchoNestTempoQueue.m; sourceTree = "<group>"; };
 		B4BB7C541930BAAE005DD5B9 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = SOURCE_ROOT; };
 		B4D5C0E2192D89CF00D6DF4C /* Pace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,10 +112,9 @@
 		B49C88E7192FDD6700F4D178 /* Tempo Provider */ = {
 			isa = PBXGroup;
 			children = (
-				B4A17E3B1939F7F6009A857A /* ASMEchoNestManager.h */,
-				B4A17E3C1939F7F6009A857A /* ASMEchoNestManager.m */,
-				B4A17E3E1939FA83009A857A /* ASMEchoNestTempoQueue.h */,
+				B46D563A194095FD00221129 /* EchoNestManager.swift */,
 				B4A17E3F1939FA83009A857A /* ASMEchoNestTempoQueue.m */,
+				B46D563C19409DAF00221129 /* EchoNestTempoWorkQueue.swift */,
 			);
 			path = "Tempo Provider";
 			sourceTree = "<group>";
@@ -336,14 +334,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46D563D19409DAF00221129 /* EchoNestTempoWorkQueue.swift in Sources */,
 				B4F0E81E193E0120008015D5 /* Track.swift in Sources */,
-				B4A17E3D1939F7F6009A857A /* ASMEchoNestManager.m in Sources */,
 				B46D5639194092A800221129 /* MPMediaItem+ASMHash.swift in Sources */,
-				B4A17E401939FA83009A857A /* ASMEchoNestTempoQueue.m in Sources */,
 				B4F0E828193F4746008015D5 /* MasterViewController.swift in Sources */,
 				B4402255193366C300FD00E2 /* ASMPlaylistBuilder.m in Sources */,
 				B4F0E823193E7874008015D5 /* AppDelegate.swift in Sources */,
 				B4F0E817193D5F65008015D5 /* MediaInfoManager.swift in Sources */,
+				B46D563B194095FD00221129 /* EchoNestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
