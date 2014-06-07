@@ -11,6 +11,7 @@ import Foundation
 class EchoNestTempoWorkQueue {
 	var tracksToUpdate : Array<Track> = []
 	var catalogCreationErrorCount = 0
+	var catalogId : String? = nil
 
 	func retryCreateEchoNestCatalog() {
 		if catalogCreationErrorCount >= 5
@@ -40,6 +41,8 @@ class EchoNestTempoWorkQueue {
 	}
 
 	func createEchoNestCatalog() {
+		println("Creating catalog")
+
 		let requestURL = NSURL.URLWithString(SharedEchoNestManager.echoNestBaseURL).URLByAppendingPathComponent("catalog/create")
 		let request = NSMutableURLRequest(URL:requestURL)
 
@@ -52,7 +55,9 @@ class EchoNestTempoWorkQueue {
 
 		request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
 
-		NSURLSession.sharedSession().dataTaskWithRequest(request) {	(data, response, error) in
+		println("Request: \(body)")
+
+		NSURLSession.sharedSession().dataTaskWithRequest(request, {	(data, response, error) in
 			if error?
 			{
 				println("Error in EchoNest request to create catalog: \(error)")
@@ -60,40 +65,37 @@ class EchoNestTempoWorkQueue {
 			}
 			else
 			{
-				// TODO This is the documented way to get an NSError out of this and other APIs, but the compiler currently rejects it
 				var jsonError : NSError?
-				let info : AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error:&jsonError)
+				let info = NSJSONSerialization.JSONObjectWithData(data, options: nil, error:&jsonError) as Dictionary<String, AnyObject!>
+
+				if jsonError
+				{
+					println("Invalid JSON response, error: \(jsonError!.localizedDescription)")
+					self.retryCreateEchoNestCatalog();
+				}
+				else
+				{
+					let reponseObj = info["response"]
+					if let response = reponseObj as? Dictionary<String, AnyObject!>
+					{
+						let idObj = response["id"]
+						if let id = idObj as? String
+						{
+							self.catalogId = id
+						}
+					}
+
+					if !self.catalogId
+					{
+						println("Did not get a catalog ID")
+						self.retryCreateEchoNestCatalog()
+					}
+					else
+					{
+						println("Got catalog id \(self.catalogId!)")
+					}
+				}
 			}
-		}
+		}).resume()
 	}
-
-	/*
-
-
-		 else
-		 {
-			 NSError* jsonError = nil;
-			 NSDictionary* info = [NSJSONSerialization JSONObjectWithData:data
-																  options:0
-																	error:&jsonError];
-			 if (jsonError)
-			 {
-				 NSLog(@"Invalid JSON response, trying again in 10s %@", jsonError);
-				 [self retryCreateEchoNestCatalog];
-			 }
-			 else
-			 {
-				 NSDictionary* enResponse = info[@"response"];
-				 self.echoNestCatalogID = enResponse[@"id"];
-				 if (!self.echoNestCatalogID)
-				 {
-					 NSLog(@"Did not receive a catalog id.\nRequest:\n%@\n\nResponse:\n%@\n\n", request, info);
-				 }
-			 }
-		 }
-
-	 }];
-}
-*/
-	
 }
