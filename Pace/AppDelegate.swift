@@ -83,12 +83,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 				if schemaVersion < 1
 				{
-					var sql = "CREATE TABLE ASMTrack ("
-					"    id           INTEGER PRIMARY KEY,"
-					"    duration     REAL NOT NULL,"
-					"    tempo        REAL,"
-					"    title        TEXT NOT NULL,"
-					"    lastTempoSearch REAL"
+					var sql = "CREATE TABLE ASMTrack (" +
+					"    id           INTEGER PRIMARY KEY," +
+					"    duration     REAL NOT NULL," +
+					"    tempo        REAL," +
+					"    title        TEXT NOT NULL," +
+					"    lastTempoSearch REAL" +
 					");"
 
 					var success = db.executeUpdate(sql, withArgumentsInArray: [])
