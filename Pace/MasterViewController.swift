@@ -35,6 +35,7 @@ class MasterViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		var newTracks : NSArray?
+		
 		Track.inDatabaseSync() { (db) in
 			let rs = db.executeQuery("SELECT * FROM Track ORDER BY title", withArgumentsInArray:[])
 			self.tracks = Track.instancesFromResultSet(rs)
