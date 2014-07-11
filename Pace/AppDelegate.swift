@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 		self.setupFCModel()
 
+		// TESTING
+		let queue = EchoNestTempoWorkQueue()
+		queue.createEchoNestCatalog()
+		// !TESTING
+
+
 		return true
 	}
 
