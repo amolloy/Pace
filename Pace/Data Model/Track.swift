@@ -27,14 +27,14 @@ import MediaPlayer
 		self.mediaItem = mediaItem
 		self.tempo = -1
 		self.lastTempoSearch = NSDate(timeIntervalSinceReferenceDate: 0)
-		self.persistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
+		self.persistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as! NSNumber
 	}
 
 	var artist: String {
-		return mediaItem.valueForProperty(MPMediaItemPropertyArtist) as String
+		return mediaItem.valueForProperty(MPMediaItemPropertyArtist) as! String
 	}
 
 	var album: String {
-		return mediaItem.valueForProperty(MPMediaItemPropertyAlbumTitle) as String
+		return mediaItem.valueForProperty(MPMediaItemPropertyAlbumTitle) as! String
 	}
 }
