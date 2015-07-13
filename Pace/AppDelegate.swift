@@ -19,9 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	{
 		self.setupFCModel()
 
+		let mediaInfoManager = MediaInfoManager()
+		mediaInfoManager.updateMediaDatabase() {
+			print("Done")
+		}
+
 		// TESTING
-		let queue = EchoNestTempoWorkQueue()
-		queue.createEchoNestCatalog()
+//		let queue = EchoNestTempoWorkQueue()
+//		queue.createEchoNestCatalog()
 		// !TESTING
 
 

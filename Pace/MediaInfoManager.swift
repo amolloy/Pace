@@ -25,7 +25,7 @@ class MediaInfoManager: NSObject {
 		return Track(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
 	}
 
-	func updateMediaDatabase(completion: ()->())
+	func updateMediaDatabase(completion: () -> Void)
 	{
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
 			{
