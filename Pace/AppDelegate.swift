@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 
 		// TESTING
-//		let queue = EchoNestTempoWorkQueue()
-//		queue.createEchoNestCatalog()
+		//		let queue = EchoNestTempoWorkQueue()
+		//		queue.createEchoNestCatalog()
 		// !TESTING
 
 
@@ -74,81 +74,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		NSFileManager.defaultManager().copyItemAtURL(seedURL, toURL: dbURL, error: &anError)
 		*/
 
-		FCModel.openDatabaseAtPath(dbPath) { (db : FMDatabase!, schemaVersionPtr : UnsafeMutablePointer<Int32>) -> Void in
-			if db.beginTransaction()
-			{
-				// My custom failure handling. Yours may vary.
-				func failedAt(statement: Int) {
-					//#if DEBUG
-					let lastErrorCode = db.lastErrorCode
-					let oLastErrorMessage = db.lastErrorMessage()
-					var lastErrorMessage = "no message"
-					if let msg = oLastErrorMessage
-					{
-						lastErrorMessage = msg
-					}
-					//#endif
-					db.rollback()
-
-					assert(false, "Migration statement \(statement) failed, code \(lastErrorCode): \(lastErrorMessage)")
-					assert(false, "Migration statement failed")
-				}
-
-				let schemaVersion = schemaVersionPtr[0]
-
-				if schemaVersion < 1
+		FCModel.openDatabaseAtPath(dbPath,
+			withDatabaseInitializer: { (db) -> Void in },
+			schemaBuilder: { (db, schemaVersionPtr) -> Void in
+				if db.beginTransaction()
 				{
-					let sql = "CREATE TABLE ASMTrack (" +
-					"    id           INTEGER PRIMARY KEY," +
-					"    duration     REAL NOT NULL," +
-					"    tempo        REAL," +
-					"    title        TEXT NOT NULL," +
-					"    lastTempoSearch REAL" +
-					");"
+					// My custom failure handling. Yours may vary.
+					func failedAt(statement: Int) {
+						//#if DEBUG
+						let lastErrorCode = db.lastErrorCode
+						let oLastErrorMessage = db.lastErrorMessage()
+						var lastErrorMessage = "no message"
+						if let msg = oLastErrorMessage
+						{
+							lastErrorMessage = msg
+						}
+						//#endif
+						db.rollback()
 
-					var success = db.executeUpdate(sql, withArgumentsInArray: [])
-					if !success
-					{
-						failedAt(1)
+						assert(false, "Migration statement \(statement) failed, code \(lastErrorCode): \(lastErrorMessage)")
+						assert(false, "Migration statement failed")
 					}
 
-					success = db.executeUpdate("CREATE INDEX IF NOT EXISTS duration ON ASMTrack (duration);", withArgumentsInArray:[])
-					if !success
+					let schemaVersion = schemaVersionPtr[0]
+
+					if schemaVersion < 1
 					{
-						failedAt(2)
+						let sql = "CREATE TABLE ASMTrack (" +
+							"    id           INTEGER PRIMARY KEY," +
+							"    duration     REAL NOT NULL," +
+							"    tempo        REAL," +
+							"    title        TEXT NOT NULL," +
+							"    lastTempoSearch REAL" +
+						");"
+
+						var success = db.executeUpdate(sql, withArgumentsInArray: [])
+						if !success
+						{
+							failedAt(1)
+						}
+
+						success = db.executeUpdate("CREATE INDEX IF NOT EXISTS duration ON ASMTrack (duration);", withArgumentsInArray:[])
+						if !success
+						{
+							failedAt(2)
+						}
 					}
+
+					if schemaVersion < 2
+					{
+						let success = db.executeUpdate("ALTER TABLE ASMTrack ADD COLUMN persistentID INTEGER", withArgumentsInArray:[])
+						if !success
+						{
+							failedAt(3)
+						}
+						schemaVersionPtr[0] = 2
+					}
+
+					if schemaVersion < 3
+					{
+						let success = db.executeUpdate("ALTER TABLE ASMTrack RENAME TO Track", withArgumentsInArray:[])
+						if !success
+						{
+							failedAt(4)
+						}
+						schemaVersionPtr[0] = 3
+					}
+
+					db.commit()
 				}
-
-				if schemaVersion < 2
-				{
-					let success = db.executeUpdate("ALTER TABLE ASMTrack ADD COLUMN persistentID INTEGER", withArgumentsInArray:[])
-					if !success
-					{
-						failedAt(3)
-					}
-					schemaVersionPtr[0] = 2
-				}
-
-				if schemaVersion < 3
-				{
-					let success = db.executeUpdate("ALTER TABLE ASMTrack RENAME TO Track", withArgumentsInArray:[])
-					if !success
-					{
-						failedAt(4)
-					}
-					schemaVersionPtr[0] = 3
-				}
-
-				db.commit()
-			}
-		}
+		})
 	}
 
 	// #pragma mark - Application's Documents directory
 
 	// Returns the URL to the application's Documents directory.
 	var applicationDocumentsDirectory: NSURL {
-	let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+		let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
 		return urls[urls.endIndex-1] as NSURL
 	}
 }

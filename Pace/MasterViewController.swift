@@ -22,8 +22,7 @@ class MasterViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "modelDidUpdate:", name: FCModelInsertNotification, object:nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "modelDidUpdate:", name: FCModelUpdateNotification, object:nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "modelDidUpdate:", name: FCModelChangeNotification, object:nil)
 	}
 
 	override func viewWillDisappear(animated: Bool) {
@@ -36,8 +35,7 @@ class MasterViewController: UITableViewController {
 		super.viewDidLoad()
 
 		Track.inDatabaseSync() { (db) in
-			let rs = db.executeQuery("SELECT * FROM Track ORDER BY title", withArgumentsInArray:[])
-			self.tracks = Track.instancesFromResultSet(rs)
+			self.tracks = Track.instancesOrderedBy("title", arguments: []);
 		}
 	}
 
@@ -64,8 +62,7 @@ class MasterViewController: UITableViewController {
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
 			var newTracks : NSArray?
 			Track.inDatabaseSync() { (db) in
-				let rs = db.executeQuery("SELECT * FROM Track ORDER BY title", withArgumentsInArray:[])
-				newTracks = Track.instancesFromResultSet(rs)
+				newTracks = Track.instancesOrderedBy("title", arguments: []);
 			}
 
 			dispatch_async(dispatch_get_main_queue()) {

@@ -2,7 +2,8 @@ platform :ios, '7'
 
 pod 'ASMCityHash', :git => 'https://github.com/amolloy/ASMCityHash.git'
 pod 'ASMAsyncEnumeration'
-pod 'FCModel'
+pod 'FCModel', :git => 'https://github.com/marcoarment/FCModel.git', 
+		       :commit => 'fcbd0a2e778f471698226c7f6953bdd2df902343'
 
 #post_install do | installer |
 #  require 'fileutils'

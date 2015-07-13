@@ -12,16 +12,22 @@ PODS:
 DEPENDENCIES:
   - ASMAsyncEnumeration
   - ASMCityHash (from `https://github.com/amolloy/ASMCityHash.git`)
-  - FCModel
+  - FCModel (from `https://github.com/marcoarment/FCModel.git`, commit `fcbd0a2e778f471698226c7f6953bdd2df902343`)
 
 EXTERNAL SOURCES:
   ASMCityHash:
     :git: https://github.com/amolloy/ASMCityHash.git
+  FCModel:
+    :commit: fcbd0a2e778f471698226c7f6953bdd2df902343
+    :git: https://github.com/marcoarment/FCModel.git
 
 CHECKOUT OPTIONS:
   ASMCityHash:
     :commit: 8f4d286037484cb382777cdd12304ac8d29a7c68
     :git: https://github.com/amolloy/ASMCityHash.git
+  FCModel:
+    :commit: fcbd0a2e778f471698226c7f6953bdd2df902343
+    :git: https://github.com/marcoarment/FCModel.git
 
 SPEC CHECKSUMS:
   ASMAsyncEnumeration: 1b1100697075ff0c48d1945f900aaf3bbd524cc5
