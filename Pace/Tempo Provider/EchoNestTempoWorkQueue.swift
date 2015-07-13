@@ -16,21 +16,21 @@ class EchoNestTempoWorkQueue {
 	func retryCreateEchoNestCatalog() {
 		if catalogCreationErrorCount >= 5
 		{
-			println("Made \(catalogCreationErrorCount) attempts with no success, giving up.")
+			print("Made \(catalogCreationErrorCount) attempts with no success, giving up.")
 		}
 		else
 		{
 			var retryTime : CUnsignedLongLong = 0
 			switch catalogCreationErrorCount {
-			case 0..2:
+			case 0..<2:
 				retryTime = 5
-			case 2..4:
+			case 2..<4:
 				retryTime = 10
 			default:
 				retryTime = 30
 			}
 
-			println("Going to try again in \(retryTime) seconds")
+			print("Going to try again in \(retryTime) seconds")
 
 			let delay = retryTime * NSEC_PER_SEC
 			let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -41,9 +41,9 @@ class EchoNestTempoWorkQueue {
 	}
 
 	func createEchoNestCatalog() {
-		println("Creating catalog")
+		print("Creating catalog")
 
-		let requestURL = NSURL.URLWithString(SharedEchoNestManager.echoNestBaseURL).URLByAppendingPathComponent("catalog/create")
+		guard let requestURL = NSURL(string: SharedEchoNestManager.echoNestBaseURL)?.URLByAppendingPathComponent("catalog/create") else { return }
 		let request = NSMutableURLRequest(URL:requestURL)
 
 		request.HTTPMethod = "POST"
@@ -51,51 +51,52 @@ class EchoNestTempoWorkQueue {
 		var body = "api_key=\(SharedEchoNestManager.echoNestAPIKey)"
 		body += "&format=json"
 		body += "&type=song"
-		body += "&name=\(NSUUID.UUID())"
+		body += "&name=\(NSUUID())"
 
 		request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
 
-		println("Request: \(body)")
+		print("Request: \(body)")
 
-		NSURLSession.sharedSession().dataTaskWithRequest(request, {	(data, response, error) in
-			if error?
+		NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {	(data, response, error) in
+			if let error = error
 			{
-				println("Error in EchoNest request to create catalog: \(error)")
+				print("Error in EchoNest request to create catalog: \(error)")
 				self.retryCreateEchoNestCatalog()
 			}
-			else
+			else if let data = data
 			{
-				var jsonError : NSError?
-				let info = NSJSONSerialization.JSONObjectWithData(data, options: nil, error:&jsonError) as Dictionary<String, AnyObject!>
-
-				if jsonError
+				let oInfo : Dictionary<String, AnyObject!>?
+				do
 				{
-					println("Invalid JSON response, error: \(jsonError!.localizedDescription)")
-					self.retryCreateEchoNestCatalog();
+					oInfo = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? Dictionary<String, AnyObject!>
+				} catch {
+					print("Invalid JSON response, error: \(error)")
+					self.retryCreateEchoNestCatalog()
+					return
+				}
+
+				guard let info = oInfo else { return }
+
+				let reponseObj = info["response"]
+				if let response = reponseObj as? Dictionary<String, AnyObject!>
+				{
+					let idObj = response["id"]
+					if let id = idObj as? String
+					{
+						self.catalogId = id
+					}
+				}
+
+				if !(self.catalogId != nil)
+				{
+					print("Did not get a catalog ID")
+					self.retryCreateEchoNestCatalog()
 				}
 				else
 				{
-					let reponseObj = info["response"]
-					if let response = reponseObj as? Dictionary<String, AnyObject!>
-					{
-						let idObj = response["id"]
-						if let id = idObj as? String
-						{
-							self.catalogId = id
-						}
-					}
-
-					if !self.catalogId
-					{
-						println("Did not get a catalog ID")
-						self.retryCreateEchoNestCatalog()
-					}
-					else
-					{
-						println("Got catalog id \(self.catalogId!)")
-					}
+					print("Got catalog id \(self.catalogId!)")
 				}
 			}
-		}).resume()
+		})?.resume()
 	}
 }
