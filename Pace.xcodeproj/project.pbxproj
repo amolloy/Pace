@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0984905DDCAD47118410A59B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		252E99B689414A22AA24254B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF9099C38E80DE23FF350CE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B4402253193366C300FD00E2 /* ASMPlaylistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMPlaylistBuilder.h; sourceTree = "<group>"; };
 		B4402254193366C300FD00E2 /* ASMPlaylistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMPlaylistBuilder.m; sourceTree = "<group>"; };
 		B46D5638194092A800221129 /* MPMediaItem+ASMHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MPMediaItem+ASMHash.swift"; sourceTree = "<group>"; };
@@ -72,6 +72,7 @@
 		B4F0E81F193E6136008015D5 /* paceFC.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = paceFC.sqlite3; sourceTree = "<group>"; };
 		B4F0E821193E7874008015D5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4F0E822193E7874008015D5 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		FABDF1FD1F493D8AE4C5AC02 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		568EFD8D8083EE8B54F11DAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FABDF1FD1F493D8AE4C5AC02 /* Pods.debug.xcconfig */,
+				3FF9099C38E80DE23FF350CE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B498B9F8192F652F00CB4BCC /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +136,7 @@
 				B4D5C113192D89CF00D6DF4C /* PaceTests */,
 				B4D5C0E4192D89CF00D6DF4C /* Frameworks */,
 				B4D5C0E3192D89CF00D6DF4C /* Products */,
-				0984905DDCAD47118410A59B /* Pods.xcconfig */,
+				568EFD8D8083EE8B54F11DAA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -311,7 +321,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3B522D62ADD3408B827B18DD /* Check Pods Manifest.lock */ = {
@@ -469,7 +479,7 @@
 		};
 		B4D5C11E192D89CF00D6DF4C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0984905DDCAD47118410A59B /* Pods.xcconfig */;
+			baseConfigurationReference = FABDF1FD1F493D8AE4C5AC02 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -488,7 +498,7 @@
 		};
 		B4D5C11F192D89CF00D6DF4C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0984905DDCAD47118410A59B /* Pods.xcconfig */;
+			baseConfigurationReference = 3FF9099C38E80DE23FF350CE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

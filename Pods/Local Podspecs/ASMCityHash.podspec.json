@@ -1,0 +1,19 @@
+{
+  "name": "ASMCityHash",
+  "version": "0.1",
+  "summary": "An Objective-C implementation of CityHash (https://code.google.com/p/cityhash/)",
+  "description": "                   An Objective-C implementation of [CityHash](https://code.google.com/p/cityhash/). This is based on the CityHash repository as of May 19, 2014. It is unlikely to keep up with the original CityHash, but as the original hasn't been updated in nearly a year that probably won't be an issue for most usages. I created this library primarily because I wanted a good hashing function that supported a 64-bit digest.\n",
+  "homepage": "https://github.com/amolloy/ASMCityHash",
+  "license": "MIT",
+  "authors": {
+    "Andy Molloy": "andy@themolloys.org"
+  },
+  "social_media_url": "http://twitter.com/amolloy",
+  "source": {
+    "git": "https://github.com/amolloy/ASMCityHash.git",
+    "tag": "0.1"
+  },
+  "source_files": "ASMCityHash/*.{h,m}",
+  "public_header_files": "ASMCityHash/*.h",
+  "requires_arc": true
+}
