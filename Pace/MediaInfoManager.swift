@@ -10,12 +10,17 @@ import UIKit
 import MediaPlayer
 
 class MediaInfoManager: NSObject {
-	func createTrackFCFromItem(mediaItem: MPMediaItem) -> Track
+	func createTrackFCFromItem(mediaItem: MPMediaItem) -> Track?
 	{
 		let digest = mediaItem.digest()
-		let title = mediaItem.valueForProperty(MPMediaItemPropertyTitle) as String
-		let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration).doubleValue as NSTimeInterval
-		let persistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
+		guard let title = mediaItem.valueForProperty(MPMediaItemPropertyTitle)?.stringValue else
+		{
+			return nil;
+		}
+		guard let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration)?.doubleValue else
+		{
+			return nil;
+		}
 
 		return Track(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
 	}
@@ -25,33 +30,46 @@ class MediaInfoManager: NSObject {
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
 			{
 				let query = MPMediaQuery.songsQuery()
+				guard let queryItems = query.items else { return }
 
 				/* TODO
 				ASMEchoNestManager* enManager = [ASMEchoNestManager sharedInstance];
 				id tempoRequestToken = [enManager startBatch];
 				*/
 
-				for mediaItemObjC : AnyObject in query.items
+				for mediaItemObjC in queryItems
 				{
 					let mediaItem = mediaItemObjC as MPMediaItem
 					let digest = mediaItem.digest()
-					let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) as NSNumber
+					guard let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) as? NSNumber else
+					{
+						continue
+					}
 
-					let tracks = Track.instancesWhere("id = ? AND duration = ? LIMIT 1", arguments: [digest, duration]);
+					guard let tracks = Track.instancesWhere("id = ? AND duration = ? LIMIT 1", arguments: [digest, duration]) as? Array<Track> else
+					{
+						continue
+					}
 					var track : Track
 					if tracks.count != 0
 					{
-						track = tracks[0] as Track
-						let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as NSNumber
-						if newPersistentID !== track.persistentID
+						track = tracks[0]
+						if let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as? NSNumber
 						{
-							track.persistentID = newPersistentID
-							track.save()
+							if newPersistentID !== track.persistentID
+							{
+								track.persistentID = newPersistentID
+								track.save()
+							}
 						}
 					}
 					else
 					{
-						track = self.createTrackFCFromItem(mediaItem);
+						guard let newTrack = self.createTrackFCFromItem(mediaItem) else
+						{
+							continue
+						}
+						track = newTrack;
 					}
 
 					if track.tempo == -1
