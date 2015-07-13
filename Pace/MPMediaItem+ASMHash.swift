@@ -11,10 +11,10 @@ import Foundation
 extension MPMediaItem
 {
 	func digestString() -> String {
-		let artist = self.valueForProperty(MPMediaItemPropertyArtist) as! NSString
-		let album = self.valueForProperty(MPMediaItemPropertyAlbumTitle) as! NSString
-		let title = self.valueForProperty(MPMediaItemPropertyTitle) as! NSString
-		let duration = self.valueForProperty(MPMediaItemPropertyPlaybackDuration) as! NSNumber
+		let artist = self.valueForProperty(MPMediaItemPropertyArtist) as? NSString ?? ""
+		let album = self.valueForProperty(MPMediaItemPropertyAlbumTitle) as? NSString ?? ""
+		let title = self.valueForProperty(MPMediaItemPropertyTitle) as? NSString ?? ""
+		let duration = self.valueForProperty(MPMediaItemPropertyPlaybackDuration)?.doubleValue ?? 0
 
 		return "\(artist) - \(album): \(title) (\(duration))"
 	}
