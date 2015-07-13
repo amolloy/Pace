@@ -34,8 +34,7 @@ class MasterViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		var newTracks : NSArray?
-		
+
 		Track.inDatabaseSync() { (db) in
 			let rs = db.executeQuery("SELECT * FROM Track ORDER BY title", withArgumentsInArray:[])
 			self.tracks = Track.instancesFromResultSet(rs)
@@ -104,10 +103,10 @@ class MasterViewController: UITableViewController {
 	}
 
 	func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-		let track = tracks[indexPath.row] as Track
+		let track = tracks[indexPath.row] as! Track
 
-		cell.textLabel.text = track.title
-		cell.detailTextLabel.text = track.tempo.description
+		cell.textLabel?.text = track.title
+		cell.detailTextLabel?.text = track.tempo.description
 	}
 }
 
