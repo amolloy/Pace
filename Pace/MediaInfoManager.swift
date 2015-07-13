@@ -13,16 +13,17 @@ class MediaInfoManager: NSObject {
 	func createTrackFCFromItem(mediaItem: MPMediaItem) -> Track?
 	{
 		let digest = mediaItem.digest()
-		guard let title = mediaItem.valueForProperty(MPMediaItemPropertyTitle)?.stringValue else
+		let title = mediaItem.valueForProperty(MPMediaItemPropertyTitle) as? String ?? "<no title>"
+		let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration)?.doubleValue ?? 0
+
+		let newTrack = Track(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
+
+		if let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as? NSNumber
 		{
-			return nil;
-		}
-		guard let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration)?.doubleValue else
-		{
-			return nil;
+			newTrack.persistentID = newPersistentID
 		}
 
-		return Track(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
+		return newTrack;
 	}
 
 	func updateMediaDatabase(completion: () -> Void)
@@ -69,6 +70,7 @@ class MediaInfoManager: NSObject {
 						{
 							continue
 						}
+						newTrack.save()
 						track = newTrack;
 					}
 
