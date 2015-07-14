@@ -23,7 +23,7 @@ static const NSInteger sTEMPVariance = 5;
 
 	[tracks enumerateObjectsUsingBlock:^(Track* track, NSUInteger idx, BOOL *stop) {
 		printf("\"%s\"\t\"%s\"\t\"%s\"\n", [track.artist cStringUsingEncoding:NSUTF8StringEncoding],
-			   [track.album cStringUsingEncoding:NSUTF8StringEncoding],
+			   [track.albumTitle cStringUsingEncoding:NSUTF8StringEncoding],
 			   [track.title cStringUsingEncoding:NSUTF8StringEncoding]);
 	}];
 }

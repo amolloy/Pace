@@ -10,22 +10,6 @@ import UIKit
 import MediaPlayer
 
 class MediaInfoManager: NSObject {
-	func createTrackFCFromItem(mediaItem: MPMediaItem) -> Track?
-	{
-		let digest = mediaItem.digest()
-		let title = mediaItem.valueForProperty(MPMediaItemPropertyTitle) as? String ?? "<no title>"
-		let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration)?.doubleValue ?? 0
-
-		let newTrack = Track(primaryKey: digest, title: title, duration: duration, mediaItem: mediaItem)
-
-		if let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as? NSNumber
-		{
-			newTrack.persistentID = newPersistentID
-		}
-
-		return newTrack;
-	}
-
 	func updateMediaDatabase(completion: () -> Void)
 	{
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
@@ -42,11 +26,8 @@ class MediaInfoManager: NSObject {
 				{
 					let mediaItem = mediaItemObjC as MPMediaItem
 					let digest = mediaItem.digest()
-					guard let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) as? NSNumber else
-					{
-						continue
-					}
-
+					let duration = mediaItem.playbackDuration ?? 0
+					
 					guard let tracks = Track.instancesWhere("id = ? AND duration = ? LIMIT 1", arguments: [digest, duration]) as? Array<Track> else
 					{
 						continue
@@ -55,21 +36,16 @@ class MediaInfoManager: NSObject {
 					if tracks.count != 0
 					{
 						track = tracks[0]
-						if let newPersistentID = mediaItem.valueForProperty(MPMediaItemPropertyPersistentID) as? NSNumber
+						let newPersistentID = NSNumber(unsignedLongLong: mediaItem.persistentID)
+						if newPersistentID !== track.persistentID
 						{
-							if newPersistentID !== track.persistentID
-							{
-								track.persistentID = newPersistentID
-								track.save()
-							}
+							track.persistentID = newPersistentID
+							track.save()
 						}
 					}
 					else
 					{
-						guard let newTrack = self.createTrackFCFromItem(mediaItem) else
-						{
-							continue
-						}
+						let newTrack = Track(mediaItem: mediaItem)
 						newTrack.save()
 						track = newTrack;
 					}
