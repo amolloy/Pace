@@ -14,17 +14,13 @@ class MediaInfoManager: NSObject {
 	{
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
 			{
-				let query = MPMediaQuery.songsQuery()
-				guard let queryItems = query.items else { return }
-
 				/* TODO
 				ASMEchoNestManager* enManager = [ASMEchoNestManager sharedInstance];
 				id tempoRequestToken = [enManager startBatch];
 				*/
 
-				for mediaItemObjC in queryItems
+				for mediaItem in (MPMediaQuery.songsQuery().items ?? [])
 				{
-					let mediaItem = mediaItemObjC as MPMediaItem
 					let digest = mediaItem.digest()
 					let duration = mediaItem.playbackDuration ?? 0
 					
